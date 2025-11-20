@@ -7,13 +7,13 @@ import gmailIcon from './assets/gmail.svg'
 
 function Title() {
     return (
-        <div className="flex flex-row bg-gradient-to-tr from-[#010203] to-transparent h-80 w-full rounded-md m-10 columns-2 items-start justify-start">
-            <a className="pt-4 pl-4">
-                <img src="https://placehold.co/290x290" alt="Placeholder"></img>
+        <div className="flex flex-row bg-gradient-to-tr from-[#010203] to-transparent h-auto w-full rounded-md m-10 pb-5 columns-2 items-start justify-start">
+            <a className="pt-4 pl-4 w-[305px] h-[305px]">
+                <img src="https://placehold.co/305x305" alt="Placeholder"></img>
             </a>
             <div className="flex flex-col pl-10">
                 <h1 className="text-white pt-10 font-[MyFont] font-ultrabold">Welp... Didn't expect someone to end up here...</h1>
-                <h1 className="text-white text-7xl font-[MyFont] font-medium">Whassup, I'm <span className="underline">Darsh</span>.</h1>
+                <h1 className="text-white text-7xl font-[MyFont] font-medium">Whassup, I'm <span className="underline">Darsh</span>!</h1>
                 <h1 className="text-white pt-5 font-[MyFont] font-ultrabold">I'm currently a 3rd year student at the University of Canterbury studying Software Engineering</h1>
                 <Socials />
             </div>
@@ -36,7 +36,7 @@ function ProgrammingLanguages() {
   return (
     <div className="grid
       grid-cols-2        /* Very small screens: 2 per row */
-      md:grid-cols-4     /* Medium screens */
+      lg:grid-cols-4     /* Medium screens */
       auto-rows-fr
       place-items-center
       w-full
@@ -44,8 +44,8 @@ function ProgrammingLanguages() {
     >
       {logos.map((logo) => (
         <a href={logo.url} className="flex flex-row items-center bg-[#FFFFFF20] rounded-md w-full transition-transform hover:scale-105 gap-5">
-            <img key={logo.image} src={logo.image} alt={logo.name} className="object-contain h-20 max-w-full transition-transform hover:scale-110 bg-white p-2" />
-            <h1 className="font-[Myfont] text-white">{logo.name}</h1>
+            <img key={logo.image} src={logo.image} alt={logo.name} className="object-contain h-20 max-w-full transition-transform hover:scale-110 bg-white p-2 rounded-l-md" />
+            <h1 className="font-[Myfont] text-white mr-30">{logo.name}</h1>
         </a>
       ))}
     </div>
@@ -128,9 +128,28 @@ function Socials() {
   );
 }
 
+function Buttons() {
+  const buttons = ["Languages", "About Me", "Projects"];
+  const [selected, setSelected] = useState(0); // null = none selected
 
-
-
+  return (
+    <div className="flex gap-4 pl-10">
+      {buttons.map((btn, index) => (
+        <button
+          key={btn}
+          onClick={() => setSelected(index)} // select this button
+          className={`px-4 py-2 rounded-4xl font-bold transition-colors cursor-pointer ${
+            selected === index
+              ? "bg-white text-black" // selected
+              : "bg-[#FFFFFF20] text-black hover:bg-[#FFFFFF30] text-white" // unselected
+          }`}
+        >
+          {btn}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 
 export default function Home() {
@@ -139,13 +158,14 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center justify-between pr-25">
             <Title />
         </div>
-        <div>
-
-        </div>
 
 
-        <div className="p-8 m-10 items-center rounded-2xl">
+
+        <div className="px-10">
+          <Buttons />
+          <div className="p-8">
             <ProgrammingLanguages />
+          </div>
         </div>
     </div>
   );

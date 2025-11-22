@@ -55,7 +55,7 @@ function ProgrammingLanguages({ hoveredLang, setHoveredLang }) {
     >
       {logos.map((logo) => (
         <a key={logo.name} href={logo.url} onMouseEnter={() => setHoveredLang(logo.name)} onMouseLeave={() => setHoveredLang(null)} className="flex flex-row items-center bg-[#FFFFFF20] rounded-md w-full transition-transform duration-50 hover:scale-105 gap-5">
-            <img key={logo.image} src={logo.image} alt={logo.name} className="object-contain h-20 max-w-full bg-white p-2 rounded-l-md shadow-[10px_0_20px_rgba(0,0,0,0.4)]" />
+            <img key={logo.image} src={logo.image} alt={logo.name} className="object-contain h-20 w-20 bg-white p-2 rounded-l-md shadow-[10px_0_20px_rgba(0,0,0,0.4)]" />
             <h1 className="font-[Myfont] text-white mr-30 text-[20px] font-normal">{logo.name}</h1>
         </a>
       ))}
@@ -113,7 +113,7 @@ function AboutMe() {
                     <li>Cooking</li>
                     <li>Chess (rated 1700+ on Chess.com)</li>
                     <li>Photoshop / Premiere Pro</li>
-                    <li>Music</li>
+                    <li>Listening to music</li>
                 </ul>
 
             </div>
@@ -147,79 +147,74 @@ function Projects() {
 }
 
 function Socials() {
-  const navigate = useNavigate();
-  const logos = [
-    { image: githubIcon, url: "https://github.com/Darsh-0", name: "Github", colour: "white" },
-  ];
+    const navigate = useNavigate();
+    const [copied, setCopied] = useState(false);
 
-  const [copied, setCopied] = useState(false);
+    const copyEmail = () => {
+        navigator.clipboard.writeText("Darsh.gandhi12@gmail.com");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+    };
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText("Darsh.gandhi12@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  };
+    return (
+        <div className="flex flex-row gap-4 pt-10">
 
-  return (
-    <div className="flex flex-row gap-4 pt-10">
+            {/* Resume button - green */}
+            <button
+                key="Resume"
+                className="hover:bg-[#3BE477] transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-[#1ED760] bg-[#1ED760]"
+                onClick={() => navigate("/resume")}
+            >
+                <img src={resumeIcon} alt="Resume" className="w-10 h-10" />
+                <h1 className="pl-3 font-[Myfont] font-medium">Resume</h1>
+            </button>
 
-      {/* Resume button - green */}
-      <button
-        key="Resume"
-        className="hover:bg-[#3BE477] transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-[#1ED760] bg-[#1ED760]"
-        onClick={() => navigate("/resume")}
-      >
-        <img src={resumeIcon} alt="Resume" className="w-10 h-10" />
-        <h1 className="pl-3 font-[Myfont] font-medium">Resume</h1>
-      </button>
+            {/* LinkedIn button - transparent */}
+            <button
+                key="Linkedin"
+                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
+                onClick={() => window.open("https://www.linkedin.com/in/darsh-gandhi-5bbaa92b2/", "_blank")}
+            >
+                <img src={linkedinIcon} alt="Linkedin" className="w-10 h-10" />
+                <h1 className="pl-3 font-[Myfont] font-medium">Linkedin</h1>
+            </button>
 
-      {/* LinkedIn button - green */}
-      <button
-        key="Linkedin"
-        className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
-        onClick={() => window.open("https://www.linkedin.com/in/darsh-gandhi-5bbaa92b2/", "_blank")}
-      >
-        <img src={linkedinIcon} alt="Linkedin" className="w-10 h-10" />
-        <h1 className="pl-3 font-[Myfont] font-medium">Linkedin</h1>
-      </button>
+            {/* GitHub button - transparent */}
 
-      {/* GitHub button - transparent */}
-      {logos.map((logo) => (
-        <button
-          key={logo.name}
-          className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
-          onClick={() => window.open(logo.url, "_blank")}
-        >
-          <img src={logo.image} alt={logo.name} className="w-10 h-10" />
-          <h1 className="pl-3 font-[Myfont] font-medium">Github</h1>
-        </button>
-      ))}
+            <button
+                key="Github"
+                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
+                onClick={() => window.open("https://github.com/Darsh-0", "_blank")}
+            >
+                <img src={githubIcon} alt="Github" className="w-10 h-10" />
+                <h1 className="pl-3 font-[Myfont] font-medium">Github</h1>
+            </button>
 
-      {/* Gmail button */}
-      <div className="relative group">
-        <button
-          key="Gmail"
-          onClick={copyEmail}
-          className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
-        >
-          <img src={gmailIcon} alt="Gmail" className="w-10 h-10" />
-          <h1 className="pl-3 font-[Myfont] font-medium">Gmail</h1>
-        </button>
+            {/* Gmail button */}
+            <div className="relative group">
+                <button
+                key="Gmail"
+                onClick={copyEmail}
+                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
+                >
+                    <img src={gmailIcon} alt="Gmail" className="w-10 h-10" />
+                    <h1 className="pl-3 font-[Myfont] font-medium">Gmail</h1>
+                </button>
 
-        {!copied && (
-          <span className="absolute top-full left-1/2 -translate-x-1/2 mb-2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">
-            Copy to clipboard
-          </span>
-        )}
+                {!copied && (
+                <span className="absolute top-full left-1/2 -translate-x-1/2 mb-2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">
+                    Copy to clipboard
+                </span>
+                )}
 
-        {copied && (
-          <span className="absolute top-full left-1/2 -translate-x-1/2 mb-2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow">
-            Copied!
-          </span>
-        )}
-      </div>
-    </div>
-  );
+                {copied && (
+                <span className="absolute top-full left-1/2 -translate-x-1/2 mb-2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow">
+                    Copied!
+                </span>
+                )}
+            </div>
+        </div>
+    );
 }
 
 function Buttons({selected, setSelected}) {

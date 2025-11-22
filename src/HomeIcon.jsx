@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function HomeIcon({ size = 24, color = "currentColor" }) {
@@ -6,11 +6,23 @@ export default function HomeIcon({ size = 24, color = "currentColor" }) {
     const navigate = useNavigate();
     const location = useLocation();
     const currentPage = location.pathname;
-    const [hovered, setHovered] = useState(false);
+
+    const [showTooltip, setShowTooltip] = useState(false);
+
+    const timeoutRef = useRef(null);
+
+    const handleMouseEnter = () => {
+        timeoutRef.current = setTimeout(() => setShowTooltip(true), 200); // 200ms delay
+    };
+
+    const handleMouseLeave = () => {
+            clearTimeout(timeoutRef.current); // cancel pending tooltip
+            setShowTooltip(false); // hide immediately
+    };
 
     return (
-        <div className="relative group">
-            <button onClick={() => navigate("/")} className="cursor-pointer" key="Home" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <div className="relative">
+            <button onClick={() => navigate("/")} className="cursor-pointer" key="Home" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <div className="bg-[#1F1F1F] rounded-full w-15 h-15 flex items-center justify-center transition-transform hover:scale-105 cursor-pointer hover:bg-[#2A2A2A]">
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} fill={color}>
@@ -18,11 +30,12 @@ export default function HomeIcon({ size = 24, color = "currentColor" }) {
                     </svg>
                 </div>
             </button>
-            {hovered && (
-                <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow opacity-100 transition-opacity">
-                    Home
-                </span>
-            )}
+            <span
+                className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-gray-800 text-white text-sm px-3 py-1 rounded shadow transition-opacity duration-150 font-[Myfont]
+                ${showTooltip ? "opacity-100" : "opacity-0"}`}
+            >
+                Home
+            </span>
         </div>
     );
 }

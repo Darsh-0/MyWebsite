@@ -4,14 +4,17 @@ import resumeIcon from './assets/resume.svg';
 import linkedinIcon from './assets/linkedin.svg';
 import githubIcon from './assets/github.svg';
 import gmailIcon from './assets/gmail.svg';
-import HomeIcon from './HomeIcon';;
+import HomeIcon from './HomeIcon';
 
-import SpotifyManagerIcon from './assets/projects/SpotifyManager.png';
+import SpotifyManagerIcon from './assets/projects/SpotifyManager1.png';
 import CoffeeCatcherIcon from './assets/projects/CoffeeCatcher.png';
+import DarshifyIcon from './assets/Projects/Darshify.png'
 import UCFKIcon from './assets/projects/UCFK.png';
 import TakeAHikeIcon from './assets/projects/TakeAHike.png';
 
 import DarshImage from './assets/aboutme/me.jpg';
+
+
 
 function Title() {
     return (
@@ -79,7 +82,7 @@ function AboutMe() {
                     university and making fun side projects.
                 </h1>
                 <div className="flex justify-center mt-5">
-                    <img src={DarshImage} className="w-40 rounded-md" />
+                    <img src={DarshImage} className="w-30 rounded-md" />
                 </div>
             </div>
             <div className={`bg-gradient-to-t from-[#073D00] to-[#275E00] ${gridsclassName}`}>
@@ -87,18 +90,32 @@ function AboutMe() {
                     Skills
                 </h1>
                 <h1 className="pt-2 font-[Myfont] font-light text-white">
-                    I'm most confident programming in Python, Java and C.
-                    I have had experience working on projects, developing Apps as groups.
-                    Working with CI/CD pipelines to improve efficiency.
+                    I am most proficient in Python, Java, and C.
+                    I have had experience working on projects, developing applications in groups.
+                    I am familiar with CI/CD pipelines to streamline development and improve efficiency.
                     Programming using Microcontrollers and Embedded Systems.
+                    I have worked with large databases, managing and querying extensive datasets.
 
                 </h1>
-                <div className="flex justify-center mt-5">
-                    <img src={DarshImage} className="w-40 rounded-md" />
-                </div>
+
             </div>
             <div className={`bg-gradient-to-t from-[#362870] to-[#524893] ${gridsclassName}`}>
-                <h1 className="font-[Myfont] font-medium text-white">hi</h1>
+                <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
+                    Hobbies / Interest
+                </h1>
+                <h1 className="pt-2 font-[Myfont] font-light text-white">
+                  My interests outside of Software Engineering include:
+                </h1>
+                <ul className="list-disc pl-5 pt-2 text-white space-y-1 font-[Myfont] font-light">
+                    <li>Football</li>
+                    <li>Snowboarding</li>
+                    <li>Gym</li>
+                    <li>Cooking</li>
+                    <li>Chess (rated 1700+ on Chess.com)</li>
+                    <li>Photoshop / Premiere Pro</li>
+                    <li>Music</li>
+                </ul>
+
             </div>
         </div>
     );
@@ -109,7 +126,7 @@ function Projects() {
     const MyProjects = [
         {name: "Spotify Manager Bot", image: SpotifyManagerIcon, url:"https://github.com/Darsh-0/Spotify-Manager-Bot"},
         {name: "Coffee Catcher", image: CoffeeCatcherIcon, url:"https://github.com/Darsh-0/Coffee_Catcher"},
-        {name: "Portofio Website", image: "https://placehold.co/305x305", url:"https://github.com/Darsh-0/MyWebsite"},
+        {name: "Portofio Website", image: DarshifyIcon, url:"https://github.com/Darsh-0/MyWebsite"},
         {name: "Pong On UCFK4 Microcontroller", image: UCFKIcon, url:"https://github.com/Darsh-0/Pong-on-UCFK4"},
         {name: "TakeAHike", image: TakeAHikeIcon, url:"https://github.com/Darsh-0/TakeAHike"},
     ];
@@ -118,7 +135,7 @@ function Projects() {
             {MyProjects.map((project) => (
                 <button key={project.image} className="flex flex-col items-start p-5 max-w-50 rounded-md hover:bg-[#1E1E1E] cursor-pointer flex" onClick={() => window.open(project.url, "_blank")}>
                     <div className="rounded-lg overflow-hidden w-[170px] h-[170px] bg-[#00000030] overflow-hidden flex justify-center items-center">
-                        <img key={project.image} src={project.image} alt={project.name} className="max-w-[170px] max-h-[170px] object-contain"/>
+                        <img key={project.image} src={project.image} alt={project.name} className="max-w-[150px] max-h-[150px] object-contain"/>
                     </div>
                     <div className="flex flex-col pt-5 text-left">
                         <h1 className="text-[#A0A0A0] whitespace-normal">{project.name}</h1>
@@ -159,7 +176,7 @@ function Socials() {
       {/* LinkedIn button - green */}
       <button
         key="Linkedin"
-        className=" transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
+        className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
         onClick={() => window.open("https://www.linkedin.com/in/darsh-gandhi-5bbaa92b2/", "_blank")}
       >
         <img src={linkedinIcon} alt="Linkedin" className="w-10 h-10" />
@@ -233,7 +250,7 @@ export default function Home() {
     return (
     <div className="flex flex-col h-screen overflow-x-hidden bg-black border-l-[14px] border-r-[14px]">
         <div
-          className={`flex flex-col rounded-2xl overflow-hidden h-screen transition-colors duration-800
+            className={`flex flex-col rounded-2xl overflow-hidden h-screen transition-colors duration-800
             ${hoveredLang === "Python" ? "bg-gradient-to-t from-[#2B2D42] to-[#3A86FF]"
             : hoveredLang === "Java" ? "bg-gradient-to-t from-[#052449] to-[#2A1400]"
             : hoveredLang === "C" ? "bg-gradient-to-t from-[#001219] to-[#005F73]"
@@ -246,8 +263,12 @@ export default function Home() {
             : "bg-gradient-to-t from-[#121212] to-[#052449]"}`}
         >
 
-        <div className="bg-black p-2">
+        <div className="bg-black p-2 flex items-center relative">
             <HomeIcon size={32} color="white" />
+            <div className="text-white absolute left-1/2 transform -translate-x-1/2 font-[Myfont] font-medium text-[30px] flex flex-row items-center gap-2">
+                <img src={DarshifyIcon} className="w-8 h-8" alt="Darshify"/>
+                <h1 className="text-[#1ED760]">Darshify</h1>
+            </div>
         </div>
 
         <div className="flex flex-col items-center justify-between pr-25 mx-auto">

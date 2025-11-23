@@ -14,17 +14,26 @@ import TakeAHikeIcon from './assets/projects/TakeAHike.png';
 
 import DarshImage from './assets/aboutme/me.jpg';
 
+import cIcon from './assets/languages/c.png';
+import cssIcon from './assets/languages/css.png';
+import htmlIcon from './assets/languages/html.png';
+import javaIcon from './assets/languages/java.png';
+import javascriptIcon from './assets/languages/javascript.png';
+import pythonIcon from './assets/languages/python.png';
+import reactIcon from './assets/languages/react.png';
+import tailwindIcon from './assets/languages/tailwind.png';
+
 
 
 function Title() {
     return (
-        <div className="flex flex-col md:flex-row bg-gradient-to-tr from-[#010203] to-transparent h-auto w-full rounded-md md:m-10 pb-5 columns-2 items-start justify-start md:pt-0">
+        <div className="flex flex-col md:flex-row bg-gradient-to-tr from-[#010203] to-transparent h-auto w-full rounded-md md:m-10 pb-5 md:pb-0 columns-2 items-start justify-start md:pt-0">
             <a className="p-4 md:pl-4 w-[305px] h-[305px] mx-auto md:mx-0">
                 <img src="https://placehold.co/305x305" alt="Placeholder"></img>
             </a>
             <div className="flex flex-col md:pl-10 items-center md:items-start text-center md:text-left">
                 <h1 className="text-white pt-10 font-[MyFont] font-ultrabold">You are currently listening to</h1>
-                <h1 className="text-white text-7xl font-[MyFont] font-medium">Whassup, I'm <span className="underline">Darsh</span>!</h1>
+                <h1 className="text-white text-7xl font-[MyFont] font-medium">Hey, I'm <span className="underline">Darsh</span>!</h1>
                 <h1 className="text-white pt-5 font-[MyFont] font-ultrabold md:pb-0 pb-3 ml-3 mr-3">I'm currently a 3rd year student at the University of Canterbury studying Software Engineering</h1>
                 <Socials />
             </div>
@@ -34,14 +43,14 @@ function Title() {
 
 function ProgrammingLanguages({ setHoveredLang }) {
   const logos = [
-      {image: "https://brandslogos.com/wp-content/uploads/images/large/python-logo.png", url:"https://www.python.org/", name:"Python"},
-      {image: "https://brandlogos.net/wp-content/uploads/2021/11/java-logo.png", url:"https://www.java.com/en/", name:"Java"},
-      {image: "https://www.pngkit.com/png/full/101-1010012_c-programming-icon-c-programming-language-logo.png", url:"https://www.c-language.org/", name:"C"},
-      {image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png", url:"https://react.dev/", name:"React"},
-      {image: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/tailwind-css-icon.png", url:"https://tailwindcss.com/", name:"Tailwind"},
-      {image: "https://cdn-icons-png.flaticon.com/512/1532/1532556.png", url:"https://www.w3.org/html/", name:"HTML"},
-      {image: "https://static.vecteezy.com/system/resources/previews/027/127/463/original/javascript-logo-javascript-icon-transparent-free-png.png", url:"https://javascript.info/", name:"JavaScript"},
-      {image: "https://cdn4.iconfinder.com/data/icons/iconsimple-programming/512/css-512.png", url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
+      {image: pythonIcon, url:"https://www.python.org/", name:"Python"},
+      {image: javaIcon, url:"https://www.java.com/en/", name:"Java"},
+      {image: cIcon, url:"https://www.c-language.org/", name:"C"},
+      {image: reactIcon, url:"https://react.dev/", name:"React"},
+      {image: tailwindIcon, url:"https://tailwindcss.com/", name:"Tailwind"},
+      {image: htmlIcon, url:"https://www.w3.org/html/", name:"HTML"},
+      {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
+      {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
   ];
 
   return (
@@ -243,6 +252,14 @@ function Buttons({selected, setSelected}) {
   );
 }
 
+function MusicPlayer() {
+    return (
+        <div className="fixed bottom-0 left-0 w-full bg-black text-white p-4">
+            test
+        </div>
+    );
+}
+
 export default function Home() {
     const [selected, setSelected] = useState(0);
     const [hoveredLang, setHoveredLang] = useState(null);
@@ -283,8 +300,11 @@ export default function Home() {
                     {selected === 1 && <AboutMe />}
                     {selected === 2 && <Projects />}
                 </div>
+
             </div>
+
         </div>
+        <MusicPlayer />
     </div>
   );
 }

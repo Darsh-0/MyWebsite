@@ -8,7 +8,7 @@ import HomeIcon from './HomeIcon';
 
 import SpotifyManagerIcon from './assets/projects/SpotifyManager1.png';
 import CoffeeCatcherIcon from './assets/projects/CoffeeCatcher.png';
-import DarshifyIcon from './assets/projects/Darshify.png'
+import DarshifyIcon from './assets/projects/darshify.png'
 import UCFKIcon from './assets/projects/UCFK.png';
 import TakeAHikeIcon from './assets/projects/TakeAHike.png';
 

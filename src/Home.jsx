@@ -18,14 +18,14 @@ import DarshImage from './assets/aboutme/me.jpg';
 
 function Title() {
     return (
-        <div className="flex flex-col md:flex-row bg-gradient-to-tr from-[#010203] to-transparent h-auto w-full rounded-md m-10 pb-5 columns-2 items-start justify-start">
-            <a className="pt-4 md:pl-4 w-[305px] h-[305px] mx-auto md:mx-0">
+        <div className="flex flex-col md:flex-row bg-gradient-to-tr from-[#010203] to-transparent h-auto w-full rounded-md md:m-10 pb-5 columns-2 items-start justify-start md:pt-0">
+            <a className="p-4 md:pl-4 w-[305px] h-[305px] mx-auto md:mx-0">
                 <img src="https://placehold.co/305x305" alt="Placeholder"></img>
             </a>
             <div className="flex flex-col md:pl-10 items-center md:items-start text-center md:text-left">
-                <h1 className="text-white pt-10 font-[MyFont] font-ultrabold">Welp... Didn't expect someone to end up here...</h1>
+                <h1 className="text-white pt-10 font-[MyFont] font-ultrabold">You are currently listening to</h1>
                 <h1 className="text-white text-7xl font-[MyFont] font-medium">Whassup, I'm <span className="underline">Darsh</span>!</h1>
-                <h1 className="text-white pt-5 font-[MyFont] font-ultrabold">I'm currently a 3rd year student at the University of Canterbury studying Software Engineering</h1>
+                <h1 className="text-white pt-5 font-[MyFont] font-ultrabold md:pb-0 pb-3 ml-3 mr-3">I'm currently a 3rd year student at the University of Canterbury studying Software Engineering</h1>
                 <Socials />
             </div>
         </div>
@@ -192,11 +192,11 @@ function Socials() {
             </button>
 
             {/* Gmail button */}
-            <div className="relative group">
+            <div className="relative group flex-none">
                 <button
                 key="Gmail"
                 onClick={copyEmail}
-                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
+                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert w-full"
                 >
                     <img src={gmailIcon} alt="Gmail" className="w-10 h-10" />
                     <h1 className="pl-3 font-[Myfont] font-medium">Gmail</h1>
@@ -249,7 +249,7 @@ export default function Home() {
     return (
     <div className="flex flex-col overflow-x-hidden bg-black border-l-[14px] border-r-[14px]">
         <div
-            className={`flex flex-col rounded-2xl overflow-hidden min-h-screen transition-colors duration-800
+            className={`flex flex-col overflow-hidden min-h-screen transition-colors duration-800
             ${hoveredLang === "Python" ? "bg-gradient-to-t from-[#2B2D42] to-[#3A86FF]"
             : hoveredLang === "Java" ? "bg-gradient-to-t from-[#052449] to-[#2A1400]"
             : hoveredLang === "C" ? "bg-gradient-to-t from-[#001219] to-[#005F73]"
@@ -276,7 +276,7 @@ export default function Home() {
 
 
 
-            <div className="px-2 md:px-10">
+            <div className="px-2 md:px-10 pt-5 md:pt-0">
                 <Buttons selected={selected} setSelected={setSelected} />
                 <div className="p-4 md:p-8">
                     {selected === 0 && <ProgrammingLanguages setHoveredLang={setHoveredLang}/>}

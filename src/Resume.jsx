@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import HomeIcon from './HomeIcon';
 import resume from './assets/pdfs/Resume.pdf';
-import DarshifyIcon from './assets/Projects/Darshify.png'
+import DarshifyIcon from './assets/projects/darshify.png'
 
 export default function Resume() {
     return (

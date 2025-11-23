@@ -16,9 +16,17 @@ export default function Resume() {
                 </div>
                 <div className="flex justify-center items-center flex-1 p-10">
                     <div className="w-full max-w-5xl h-full bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
-                        <object data={resume} type="application/pdf" width="100%" height="100%" className="w-full h-full">
-                            <p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the PDF!</a></p>
-                        </object>
+                        <iframe src={resume} type="application/pdf" width="100%" height="100%" className="w-full h-full">
+                            <div className="flex flex-col items-center justify-center w-full h-full p-6 text-center text-white">
+                                <p className="mb-4 text-lg">
+                                    The PDF viewer could not load.
+                                </p>
+
+                                <a href={resume} download className="px-6 py-3 bg-[#1ED760] text-black font-semibold rounded-xl hover:opacity-90 transition">
+                                    Download PDF
+                                </a>
+                            </div>
+                        </iframe>
                     </div>
                 </div>
             </div>

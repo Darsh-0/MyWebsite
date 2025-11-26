@@ -5,6 +5,8 @@ import linkedinIcon from './assets/linkedin.svg';
 import githubIcon from './assets/github.svg';
 import gmailIcon from './assets/gmail.svg';
 import HomeIcon from './HomeIcon';
+import Timer from './Timer';
+import PlayButton from './PlayButton';
 
 import SpotifyManagerIcon from './assets/projects/SpotifyManager1.png';
 import CoffeeCatcherIcon from './assets/projects/CoffeeCatcher.png';
@@ -63,9 +65,15 @@ function ProgrammingLanguages({ setHoveredLang }) {
       gap-5"
     >
       {logos.map((logo) => (
-        <a key={logo.name} href={logo.url} onMouseEnter={() => setHoveredLang(logo.name)} onMouseLeave={() => setHoveredLang(null)} className="flex flex-row items-center bg-[#FFFFFF20] rounded-md w-full transition-transform duration-50 hover:scale-105 gap-5">
+        <a key={logo.name} href={logo.url} onMouseEnter={() => setHoveredLang(logo.name)} onMouseLeave={() => setHoveredLang(null)} className="relative group flex flex-row items-center bg-[#FFFFFF20] rounded-md w-full transition-transform duration-50 hover:scale-105 gap-5">
             <img key={logo.image} src={logo.image} alt={logo.name} className="object-contain h-12 w-12 md:h-20 md:w-20 bg-white p-2 rounded-l-md shadow-[10px_0_20px_rgba(0,0,0,0.4)]" />
             <h1 className="font-[Myfont] text-white mr-30 text-[17px] md:text-[20px] font-normal">{logo.name}</h1>
+            <div onClick={(e) => {
+                         e.preventDefault();  // prevent <a> navigation
+                         e.stopPropagation(); // prevent event from reaching parent <a>
+                       }} className="absolute right-5 top-1/2 transform -translate-y-1/2">
+                <PlayButton size={50} />
+            </div>
         </a>
       ))}
     </div>
@@ -73,28 +81,32 @@ function ProgrammingLanguages({ setHoveredLang }) {
 }
 
 function AboutMe() {
-    const gridsclassName = "rounded-lg flex flex-col flex-1 p-5 grid-cols-1";
-
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
-            <div className={`bg-gradient-to-t from-[#650A00] to-[#913000] ${gridsclassName}`}>
-                <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
-                    Who I Am?
-                </h1>
-                <h1 className="pt-2 font-[Myfont] font-light text-white">
-                    I'm Darsh Gandhi 20 year old Software Engineering student at The {" "}
-                    <a href="https://www.canterbury.ac.nz/"  className="text-blue-400 underline" target="_blank" rel="noopener noreferrer">
-                        University of Canterbury
-                    </a>{" "}
-                    with the Hiranga Scholarship after Completing the International Baccalaureate Program.
-                    I've gotten more into programming and Software Engineering after starting
-                    university and making fun side projects.
-                </h1>
-                <div className="flex justify-center mt-5">
-                    <img src={DarshImage} className="w-30 rounded-md" />
+            <div className="flex flex-row bg-gradient-to-t from-[#650A00] to-[#913000] rounded-lg flex-1 p-5 gap-5 items-center">
+                <div>
+                    <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
+                        Who I Am?
+                    </h1>
+                    <h1 className="pt-2 font-[Myfont] font-light text-white">
+                        I'm Darsh Gandhi 20 year old Software Engineering student at The{" "}
+                        <a href="https://www.canterbury.ac.nz/" className="text-blue-400 underline" target="_blank" rel="noopener noreferrer">
+                            University of Canterbury
+                        </a>{" "}
+                        with the Hiranga Scholarship after Completing the International Baccalaureate Program.
+                        I've gotten more into programming and Software Engineering after starting
+                        university and making fun side projects.
+                    </h1>
+                </div>
+
+                <div className="relative inline-block group">
+                    <img src={DarshImage} className="rounded-md w-222 h-auto" />
+                    <div className="absolute bottom-1 right-1">
+                        <PlayButton size={50}/>
+                    </div>
                 </div>
             </div>
-            <div className={`bg-gradient-to-t from-[#073D00] to-[#275E00] ${gridsclassName}`}>
+            <div className="bg-gradient-to-t from-[#073D00] to-[#275E00] rounded-lg flex flex-col flex-1 p-5 grid-cols-1">
                 <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
                     Skills
                 </h1>
@@ -108,7 +120,7 @@ function AboutMe() {
                 </h1>
 
             </div>
-            <div className={`bg-gradient-to-t from-[#362870] to-[#524893] ${gridsclassName}`}>
+            <div className="bg-gradient-to-t from-[#362870] to-[#524893] rounded-lg flex flex-col flex-1 p-5 grid-cols-1">
                 <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
                     Hobbies / Interest
                 </h1>
@@ -253,14 +265,24 @@ function Buttons({selected, setSelected}) {
 }
 
 function MusicPlayer() {
+    const [currentTime, setCurrentTime] = useState(0);
+    const upperLimit = 10;
+
     return (
-        <div className="fixed bottom-0 left-0 w-full bg-black text-white p-4">
-            test
+        <div className="flex flex-col fixed bottom-0 left-0 w-full bg-black text-white p-8">
+            <div className=" w-full bg-[#4D4D4D] rounded-full h-4 relative">
+                <a className="bg-white h-4 rounded-full absolute top-0 left-0 transition-all duration-300" style={{ width: `${(currentTime / upperLimit) * 100}%` }} />
+                <Timer upperLimit={upperLimit} currentSeconds={currentTime} setCurrentSeconds={setCurrentTime} />
+            </div>
+            <div>
+                <h1>{currentTime}</h1>
+            </div>
         </div>
     );
 }
 
 export default function Home() {
+    console.log("You shouldn't be here😐");
     const [selected, setSelected] = useState(0);
     const [hoveredLang, setHoveredLang] = useState(null);
     return (

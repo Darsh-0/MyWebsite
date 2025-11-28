@@ -7,6 +7,7 @@ import gmailIcon from './assets/gmail.svg';
 import HomeIcon from './HomeIcon';
 import Timer from './Timer';
 import PlayButton from './PlayButton';
+import PlayerButtons from './PlayerButtons';
 
 import SpotifyManagerIcon from './assets/projects/SpotifyManager1.png';
 import CoffeeCatcherIcon from './assets/projects/CoffeeCatcher.png';
@@ -24,7 +25,6 @@ import javascriptIcon from './assets/languages/javascript.png';
 import pythonIcon from './assets/languages/python.png';
 import reactIcon from './assets/languages/react.png';
 import tailwindIcon from './assets/languages/tailwind.png';
-
 
 
 function Title() {
@@ -184,7 +184,7 @@ function Socials() {
             {/* Resume button - green */}
             <button
                 key="Resume"
-                className="hover:bg-[#3BE477] transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-[#1ED760] bg-[#1ED760]"
+                className="hover:bg-[#3BE477] transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-[#1ED760] bg-[#1ED760] active:scale-100"
                 onClick={() => navigate("/resume")}
             >
                 <img src={resumeIcon} alt="Resume" className="w-10 h-10" />
@@ -194,7 +194,7 @@ function Socials() {
             {/* LinkedIn button - transparent */}
             <button
                 key="Linkedin"
-                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
+                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert active:scale-100"
                 onClick={() => window.open("https://www.linkedin.com/in/darsh-gandhi-5bbaa92b2/", "_blank")}
             >
                 <img src={linkedinIcon} alt="Linkedin" className="w-10 h-10" />
@@ -205,7 +205,7 @@ function Socials() {
 
             <button
                 key="Github"
-                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert"
+                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert active:scale-100"
                 onClick={() => window.open("https://github.com/Darsh-0", "_blank")}
             >
                 <img src={githubIcon} alt="Github" className="w-10 h-10" />
@@ -217,7 +217,7 @@ function Socials() {
                 <button
                 key="Gmail"
                 onClick={copyEmail}
-                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert w-full"
+                className="hover:bg-gray-400 transform transition-transform duration-50 hover:scale-110 cursor-pointer text-black font-bold py-2 px-4 rounded-4xl flex items-center border border-gray-400 bg-transparent filter invert w-full active:scale-100"
                 >
                     <img src={gmailIcon} alt="Gmail" className="w-10 h-10" />
                     <h1 className="pl-3 font-[Myfont] font-medium">Gmail</h1>
@@ -266,18 +266,38 @@ function Buttons({selected, setSelected}) {
 
 function MusicPlayer() {
     const [currentTime, setCurrentTime] = useState(0);
-    const upperLimit = 10;
+    const upperLimit = 120;
+    const [playing, setPlaying] = useState(true);
 
     return (
-        <div className="flex flex-col fixed bottom-0 left-0 w-full bg-black text-white p-8">
-            <div className=" w-full bg-[#4D4D4D] rounded-full h-4 relative">
-                <a className="bg-white h-4 rounded-full absolute top-0 left-0 transition-all duration-300" style={{ width: `${(currentTime / upperLimit) * 100}%` }} />
-                <Timer upperLimit={upperLimit} currentSeconds={currentTime} setCurrentSeconds={setCurrentTime} />
+        <div className="grid grid-cols-3 grid-rows-2 fixed bottom-0 left-0 pt-3 w-full bg-black text-white hidden md:grid">
+
+            <div className="col-start-2 row-start-1 flex justify-center items-center">
+                <PlayerButtons playing={playing} setPlaying={setPlaying}/>
             </div>
-            <div>
-                <h1>{currentTime}</h1>
+
+            <div className="col-start-1 row-start-2 flex items-center justify-end mr-4 flex items-center">
+                <h1>
+                    {Math.floor(currentTime/60)}:
+                    {String(Math.trunc(currentTime % 60)).padStart(2, "0")}
+                </h1>
+            </div>
+
+            <div className="col-start-2 row-start-2 flex items-center">
+                <div className="bg-[#4D4D4D] rounded-full h-4 w-full relative">
+                    <a className="bg-white h-4 rounded-full absolute top-0 left-0 transition-all duration-300" style={{ width: `${(currentTime / upperLimit) * 100}%` }}/>
+                    <Timer upperLimit={upperLimit} currentSeconds={currentTime} setCurrentSeconds={setCurrentTime} playing={playing}/>
+                </div>
+            </div>
+
+            <div className="col-start-3 ml-4 row-start-2 flex justify-start items-center">
+                <h1>
+                    {Math.floor(upperLimit/60)}:
+                    {String(upperLimit % 60).padStart(2, "0")}
+                </h1>
             </div>
         </div>
+
     );
 }
 
@@ -326,7 +346,7 @@ export default function Home() {
             </div>
 
         </div>
-        <MusicPlayer />
+        <MusicPlayer/>
     </div>
   );
 }

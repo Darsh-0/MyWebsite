@@ -268,10 +268,19 @@ function MusicPlayer() {
     const [currentTime, setCurrentTime] = useState(0);
     const upperLimit = 120;
     const [playing, setPlaying] = useState(true);
+    const [song, setSong] = useState(0);
 
     return (
-        <div className="grid grid-cols-3 grid-rows-2 fixed bottom-0 left-0 pt-3 w-full bg-black text-white hidden md:grid">
-
+        <div className="grid grid-cols-3 grid-rows-2 fixed bottom-0 left-0 pt-4 w-full bg-black text-white hidden md:grid">
+            <div className="col-start-1 row-start-1 row-span-2 pl-5 flex items-center gap-4 pb-3">
+                <div className="bg-white rounded-md inline-block">
+                    <img src={DarshifyIcon} className="w-16 h-16 p-1" alt="Darshify"/>
+                </div>
+                <div className="flex flex-col">
+                    <h1>Name</h1>
+                    <h1 className="text-[#929292]">Author</h1>
+                </div>
+            </div>
             <div className="col-start-2 row-start-1 flex justify-center items-center">
                 <PlayerButtons playing={playing} setPlaying={setPlaying}/>
             </div>
@@ -284,8 +293,8 @@ function MusicPlayer() {
             </div>
 
             <div className="col-start-2 row-start-2 flex items-center">
-                <div className="bg-[#4D4D4D] rounded-full h-4 w-full relative">
-                    <a className="bg-white h-4 rounded-full absolute top-0 left-0 transition-all duration-300" style={{ width: `${(currentTime / upperLimit) * 100}%` }}/>
+                <div className="bg-[#4D4D4D] rounded-full h-2 w-full relative">
+                    <a className="bg-white h-2 rounded-full absolute top-0 left-0 transition-all duration-300" style={{ width: `${(currentTime / upperLimit) * 100}%` }}/>
                     <Timer upperLimit={upperLimit} currentSeconds={currentTime} setCurrentSeconds={setCurrentTime} playing={playing}/>
                 </div>
             </div>
@@ -335,7 +344,7 @@ export default function Home() {
 
 
 
-            <div className="px-2 md:px-10 pt-5 md:pt-0">
+            <div className="flex-1 overflow-y-auto px-2 md:px-10 pt-5 md:pt-0 pb-[140px]">
                 <Buttons selected={selected} setSelected={setSelected} />
                 <div className="p-4 md:p-8">
                     {selected === 0 && <ProgrammingLanguages setHoveredLang={setHoveredLang}/>}
@@ -344,9 +353,9 @@ export default function Home() {
                 </div>
 
             </div>
-
-        </div>
         <MusicPlayer/>
+        </div>
+
     </div>
   );
 }

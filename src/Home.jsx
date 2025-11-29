@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import resumeIcon from './assets/resume.svg';
 import linkedinIcon from './assets/linkedin.svg';
@@ -43,7 +44,7 @@ function Title() {
     );
 }
 
-function ProgrammingLanguages({ setHoveredLang }) {
+function ProgrammingLanguages({ setHoveredLang, onPlay }) {
   const logos = [
       {image: pythonIcon, url:"https://www.python.org/", name:"Python"},
       {image: javaIcon, url:"https://www.java.com/en/", name:"Java"},
@@ -64,13 +65,14 @@ function ProgrammingLanguages({ setHoveredLang }) {
       w-full
       gap-5"
     >
-      {logos.map((logo) => (
+      {logos.map((logo, index) => (
         <a key={logo.name} href={logo.url} onMouseEnter={() => setHoveredLang(logo.name)} onMouseLeave={() => setHoveredLang(null)} className="relative group flex flex-row items-center bg-[#FFFFFF20] rounded-md w-full transition-transform duration-50 hover:scale-105 gap-5">
             <img key={logo.image} src={logo.image} alt={logo.name} className="object-contain h-12 w-12 md:h-20 md:w-20 bg-white p-2 rounded-l-md shadow-[10px_0_20px_rgba(0,0,0,0.4)]" />
             <h1 className="font-[Myfont] text-white mr-30 text-[17px] md:text-[20px] font-normal">{logo.name}</h1>
             <div onClick={(e) => {
                          e.preventDefault();  // prevent <a> navigation
                          e.stopPropagation(); // prevent event from reaching parent <a>
+                         onPlay(index);
                        }} className="absolute right-5 top-1/2 transform -translate-y-1/2">
                 <PlayButton size={50} />
             </div>
@@ -264,41 +266,71 @@ function Buttons({selected, setSelected}) {
   );
 }
 
-function MusicPlayer() {
+function MusicPlayer({ song, setSong }) {
     const [currentTime, setCurrentTime] = useState(0);
-    const upperLimit = 120;
+    const upperLimit = 123;
     const [playing, setPlaying] = useState(true);
-    const [song, setSong] = useState(0);
+
+    useEffect(() => {
+        setCurrentTime(0);
+    }, [song]);
+
+
+    const logos = [
+        {image: pythonIcon, url:"https://www.python.org/", name:"Python"},
+        {image: javaIcon, url:"https://www.java.com/en/", name:"Java"},
+        {image: cIcon, url:"https://www.c-language.org/", name:"C"},
+        {image: reactIcon, url:"https://react.dev/", name:"React"},
+        {image: tailwindIcon, url:"https://tailwindcss.com/", name:"Tailwind"},
+        {image: htmlIcon, url:"https://www.w3.org/html/", name:"HTML"},
+        {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
+        {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
+    ];
 
     return (
         <div className="grid grid-cols-3 grid-rows-2 fixed bottom-0 left-0 pt-4 w-full bg-black text-white hidden md:grid">
+            {/* Left: Song info */}
             <div className="col-start-1 row-start-1 row-span-2 pl-5 flex items-center gap-4 pb-3">
                 <div className="bg-white rounded-md inline-block">
-                    <img src={DarshifyIcon} className="w-16 h-16 p-1" alt="Darshify"/>
+                    <img src={logos[song].image} className="w-16 h-16 p-1" alt="Darshify"/>
                 </div>
                 <div className="flex flex-col">
-                    <h1>Name</h1>
-                    <h1 className="text-[#929292]">Author</h1>
+                    <h1>{logos[song].name}</h1>
+                    <h1 className="text-[#929292]">Darsh Gandhi</h1>
                 </div>
             </div>
+
+            {/* Center: Player buttons */}
             <div className="col-start-2 row-start-1 flex justify-center items-center">
                 <PlayerButtons playing={playing} setPlaying={setPlaying}/>
             </div>
 
-            <div className="col-start-1 row-start-2 flex items-center justify-end mr-4 flex items-center">
+            {/* Timer left */}
+            <div className="col-start-1 row-start-2 flex items-center justify-end mr-4">
                 <h1>
                     {Math.floor(currentTime/60)}:
                     {String(Math.trunc(currentTime % 60)).padStart(2, "0")}
                 </h1>
             </div>
 
-            <div className="col-start-2 row-start-2 flex items-center">
+            {/* Timer progress bar */}
+            <div className="col-start-2 row-start-2 flex items-center w-full">
                 <div className="bg-[#4D4D4D] rounded-full h-2 w-full relative">
-                    <a className="bg-white h-2 rounded-full absolute top-0 left-0 transition-all duration-300" style={{ width: `${(currentTime / upperLimit) * 100}%` }}/>
-                    <Timer upperLimit={upperLimit} currentSeconds={currentTime} setCurrentSeconds={setCurrentTime} playing={playing}/>
+                    <a
+                        className="bg-white h-2 rounded-full absolute top-0 left-0 transition-all duration-300"
+                        style={{ width: `${(currentTime / upperLimit) * 100}%` }}
+                    />
+                    <Timer
+                        upperLimit={upperLimit}
+                        currentSeconds={currentTime}
+                        setCurrentSeconds={setCurrentTime}
+                        playing={playing}
+                        onEnd={() => setSong((prev) => (prev + 1) % logos.length)}
+                    />
                 </div>
             </div>
 
+            {/* Timer right: total */}
             <div className="col-start-3 ml-4 row-start-2 flex justify-start items-center">
                 <h1>
                     {Math.floor(upperLimit/60)}:
@@ -306,14 +338,19 @@ function MusicPlayer() {
                 </h1>
             </div>
         </div>
-
     );
 }
 
 export default function Home() {
-    console.log("You shouldn't be here😐");
+
     const [selected, setSelected] = useState(0);
     const [hoveredLang, setHoveredLang] = useState(null);
+    const [song, setSong] = useState(0);
+
+    const onPlay = (index) => {
+        setSong(index);
+    };
+
     return (
     <div className="flex flex-col overflow-x-hidden bg-black border-l-[14px] border-r-[14px]">
         <div
@@ -347,15 +384,13 @@ export default function Home() {
             <div className="flex-1 overflow-y-auto px-2 md:px-10 pt-5 md:pt-0 pb-[140px]">
                 <Buttons selected={selected} setSelected={setSelected} />
                 <div className="p-4 md:p-8">
-                    {selected === 0 && <ProgrammingLanguages setHoveredLang={setHoveredLang}/>}
+                    {selected === 0 && <ProgrammingLanguages setHoveredLang={setHoveredLang} onPlay={(index) => setSong(index)}/>}
                     {selected === 1 && <AboutMe />}
                     {selected === 2 && <Projects />}
                 </div>
-
             </div>
-        <MusicPlayer/>
+        <MusicPlayer song={song} setSong={setSong}/>
         </div>
-
     </div>
   );
 }

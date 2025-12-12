@@ -95,7 +95,7 @@ function AboutMe() {
                         <a href="https://www.canterbury.ac.nz/" className="text-blue-400 underline" target="_blank" rel="noopener noreferrer">
                             University of Canterbury
                         </a>{" "}
-                        with the Hiranga Scholarship after Completing the International Baccalaureate Program.
+                        with the Hiranga Scholarship after completing the International Baccalaureate Program.
                         I've gotten more into programming and Software Engineering after starting
                         university and making fun side projects.
                     </h1>
@@ -115,7 +115,7 @@ function AboutMe() {
                 <h1 className="pt-2 font-[Myfont] font-light text-white">
                     I am most proficient in Python, Java, and C.
                     I have had experience working on projects, developing applications in groups.
-                    I am familiar with CI/CD pipelines to streamline development and improve efficiency.
+                    I am familiar with CI/CD pipelines to streamline development, improve efficiency and reduce manual labour.
                     Programming using Microcontrollers and Embedded Systems.
                     I have worked with large databases, managing and querying extensive datasets.
 
@@ -354,7 +354,7 @@ export default function Home() {
     return (
     <div className="flex flex-col overflow-x-hidden bg-black border-l-[14px] border-r-[14px]">
         <div
-            className={`flex flex-col overflow-hidden min-h-screen transition-colors duration-800
+            className={`flex flex-col overflow-hidden min-h-screen transition-colors duration-800 overflow-y-scroll
             ${hoveredLang === "Python" ? "bg-gradient-to-t from-[#2B2D42] to-[#3A86FF]"
             : hoveredLang === "Java" ? "bg-gradient-to-t from-[#052449] to-[#2A1400]"
             : hoveredLang === "C" ? "bg-gradient-to-t from-[#001219] to-[#005F73]"

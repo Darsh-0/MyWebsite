@@ -304,8 +304,8 @@ function MusicPlayer({ song, setSong }) {
         <div className="grid grid-cols-3 grid-rows-2 fixed bottom-0 left-0 pt-4 w-full bg-black text-white hidden md:grid">
             {/* Left: Song info */}
             <div className="col-start-1 row-start-1 row-span-2 pl-5 flex items-center gap-4 pb-3">
-                <div className="rounded-lg inline-block bg-white overflow-hidden">
-                    <img src={logos[song].image} className="max-w-18 h-auto rounded-lg" alt="Darshify"/>
+                <div className="rounded-lg inline-block bg-white overflow-hidden w-18 h-18">
+                    <img src={logos[song].image} className="w-full h-full object-contain object-center rounded-lg" alt="Darshify"/>
                 </div>
                 <div className="flex flex-col">
                     <h1>{logos[song].name}</h1>

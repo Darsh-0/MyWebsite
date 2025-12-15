@@ -315,7 +315,7 @@ function MusicPlayer({ song, setSong }) {
 
             {/* Center: Player buttons */}
             <div className="col-start-2 row-start-1 flex justify-center items-center">
-                <PlayerButtons playing={playing} setPlaying={setPlaying}/>
+                <PlayerButtons playing={playing} setPlaying={setPlaying} song={song} setSong={setSong} currentTime={currentTime} setCurrentTime={setCurrentTime} totalSongs={logos.length}/>
             </div>
 
             {/* Timer left */}

@@ -17,6 +17,7 @@ import UCFKIcon from './assets/projects/UCFK.png';
 import TakeAHikeIcon from './assets/projects/TakeAHike.png';
 
 import DarshImage from './assets/aboutme/me.jpg';
+import DarshSnowImage from './assets/aboutme/snowboard.jpg';
 
 import cIcon from './assets/languages/c.png';
 import cssIcon from './assets/languages/css.png';
@@ -82,13 +83,13 @@ function ProgrammingLanguages({ setHoveredLang, onPlay }) {
   );
 }
 
-function AboutMe() {
+function AboutMe({onPlay}) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
             <div className="flex flex-row bg-gradient-to-t from-[#650A00] to-[#913000] rounded-lg flex-1 p-5 gap-5 items-center">
                 <div>
                     <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
-                        Who I Am?
+                        Who Am I?
                     </h1>
                     <h1 className="pt-2 font-[Myfont] font-light text-white">
                         I'm Darsh Gandhi 20 year old Software Engineering student at The{" "}
@@ -101,10 +102,13 @@ function AboutMe() {
                     </h1>
                 </div>
 
-                <div className="relative inline-block group">
-                    <img src={DarshImage} className="rounded-md w-222 h-auto" />
-                    <div className="absolute bottom-1 right-1">
-                        <PlayButton size={50}/>
+                <div className="flex flex-row rounded-lg flex-1 p-5 gap-5 items-center">
+                    <div className="relative inline-block group ml-auto flex-shrink-0">
+                        <img src={DarshImage} className="rounded-md max-w-40" />
+
+                        <div onClick={() => {onPlay(8);}} className="absolute bottom-1 right-1">
+                            <PlayButton size={50} />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -118,27 +122,33 @@ function AboutMe() {
                     I am familiar with CI/CD pipelines to streamline development, improve efficiency and reduce manual labour.
                     Programming using Microcontrollers and Embedded Systems.
                     I have worked with large databases, managing and querying extensive datasets.
-
                 </h1>
-
             </div>
-            <div className="bg-gradient-to-t from-[#362870] to-[#524893] rounded-lg flex flex-col flex-1 p-5 grid-cols-1">
-                <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
-                    Hobbies / Interest
-                </h1>
-                <h1 className="pt-2 font-[Myfont] font-light text-white">
-                  My interests outside of Software Engineering include:
-                </h1>
-                <ul className="list-disc pl-5 pt-2 text-white space-y-1 font-[Myfont] font-light">
-                    <li>Football</li>
-                    <li>Snowboarding</li>
-                    <li>Gym</li>
-                    <li>Cooking</li>
-                    <li>Chess (rated 1700+ on Chess.com)</li>
-                    <li>Photoshop / Premiere Pro</li>
-                    <li>Listening to music</li>
-                </ul>
-
+            <div className="flex flex-row bg-gradient-to-t from-[#362870] to-[#524893] rounded-lg flex-1 p-5 gap-5 items-center">
+                <div>
+                    <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
+                        Hobbies / Interest
+                    </h1>
+                    <h1 className="pt-2 font-[Myfont] font-light text-white">
+                        My interests outside of Software Engineering include:
+                    </h1>
+                    <ul className="list-disc pl-5 pt-2 text-white space-y-1 font-[Myfont] font-light">
+                        <li>Football</li>
+                        <li>Snowboarding</li>
+                        <li>Gym</li>
+                        <li>Chess (rated 1700+ on Chess.com)</li>
+                        <li>Photoshop / Premiere Pro</li>
+                        <li>Listening to music</li>
+                    </ul>
+                </div>
+                <div className="flex flex-row rounded-lg flex-1 p-5 gap-5 items-center">
+                    <div className="relative inline-block group ml-auto flex-shrink-0">
+                        <img src={DarshSnowImage} className="rounded-md max-w-40" />
+                        <div onClick={() => {onPlay(9);}} className="absolute bottom-1 right-1">
+                            <PlayButton size={50} />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
@@ -284,15 +294,18 @@ function MusicPlayer({ song, setSong }) {
         {image: tailwindIcon, url:"https://tailwindcss.com/", name:"Tailwind"},
         {image: htmlIcon, url:"https://www.w3.org/html/", name:"HTML"},
         {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
-        {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
+        {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"},
+        {image: DarshImage, url:"w", name:"Academic Weapon"},
+        {image: DarshSnowImage, url:"w", name:"Snowy"},
+
     ];
 
     return (
         <div className="grid grid-cols-3 grid-rows-2 fixed bottom-0 left-0 pt-4 w-full bg-black text-white hidden md:grid">
             {/* Left: Song info */}
             <div className="col-start-1 row-start-1 row-span-2 pl-5 flex items-center gap-4 pb-3">
-                <div className="bg-white rounded-md inline-block">
-                    <img src={logos[song].image} className="w-16 h-16 p-1" alt="Darshify"/>
+                <div className="rounded-lg inline-block bg-white overflow-hidden">
+                    <img src={logos[song].image} className="max-w-18 h-auto rounded-lg" alt="Darshify"/>
                 </div>
                 <div className="flex flex-col">
                     <h1>{logos[song].name}</h1>
@@ -385,7 +398,7 @@ export default function Home() {
                 <Buttons selected={selected} setSelected={setSelected} />
                 <div className="p-4 md:p-8">
                     {selected === 0 && <ProgrammingLanguages setHoveredLang={setHoveredLang} onPlay={(index) => setSong(index)}/>}
-                    {selected === 1 && <AboutMe />}
+                    {selected === 1 && <AboutMe onPlay={onPlay}/>}
                     {selected === 2 && <Projects />}
                 </div>
             </div>

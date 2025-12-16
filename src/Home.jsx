@@ -31,14 +31,14 @@ import tailwindIcon from './assets/languages/tailwind.png';
 
 function Title() {
     return (
-        <div className="flex flex-col md:flex-row bg-gradient-to-tr from-[#010203] to-transparent h-auto w-full rounded-md md:m-10 pb-5 md:pb-0 columns-2 items-start justify-start md:pt-0">
-            <a className="p-4 md:pl-4 w-[305px] h-[305px] mx-auto md:mx-0">
+        <div className="flex flex-col lg:flex-row bg-gradient-to-tr from-[#010203] to-transparent h-auto w-full rounded-lg lg:m-10 pb-5 lg:pb-0 columns-2 items-start justify-start lg:pt-0">
+            <a className="p-4 lg:pl-4 w-[305px] h-[305px] mx-auto lg:mx-0">
                 <img src="https://placehold.co/305x305" alt="Placeholder"></img>
             </a>
-            <div className="flex flex-col md:pl-10 items-center md:items-start text-center md:text-left">
-                <h1 className="text-white pt-10 font-[MyFont] font-ultrabold">You are currently listening to</h1>
+            <div className="flex flex-col lg:pl-10 items-center lg:items-start text-center lg:text-left">
+                <h1 className="text-white pt-10 pl-0.5 font-[MyFont] font-ultrabold">Playlist</h1>
                 <h1 className="text-white text-7xl font-[MyFont] font-medium">Hey, I'm <span className="underline">Darsh</span>!</h1>
-                <h1 className="text-white pt-5 font-[MyFont] font-ultrabold md:pb-0 pb-3 ml-3 mr-3">I'm currently a 3rd year student at the University of Canterbury studying Software Engineering</h1>
+                <h1 className="text-white pt-5 font-[MyFont] font-ultrabold lg:pb-0 pb-3 ml-3 mr-3">I'm currently a 3rd year student at the University of Canterbury studying Software Engineering</h1>
                 <Socials />
             </div>
         </div>
@@ -85,7 +85,7 @@ function ProgrammingLanguages({ setHoveredLang, onPlay }) {
 
 function AboutMe({onPlay}) {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10">
             <div className="flex flex-row bg-gradient-to-t from-[#650A00] to-[#913000] rounded-lg flex-1 p-5 gap-5 items-center">
                 <div>
                     <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
@@ -164,14 +164,16 @@ function Projects() {
         {name: "TakeAHike", image: TakeAHikeIcon, url:"https://github.com/Darsh-0/TakeAHike"},
     ];
     return (
-        <div className="grid grid-cols-1 justify-items-center gap-4 md:flex md:flex-row md:gap-4 md:justify-start">
+        <div className="grid gap-4 justify-items-center [grid-template-columns:repeat(auto-fit,minmax(170px,1fr))]">
             {MyProjects.map((project) => (
-                <button key={project.image} className="flex flex-col items-center p-5 max-w-[170px] rounded-md hover:bg-[#1E1E1E] cursor-pointer" onClick={() => window.open(project.url, "_blank")}>
-                    <div className="rounded-lg overflow-hidden w-[170px] h-[170px] bg-[#00000030] flex justify-center items-center">
-                        <img key={project.image} src={project.image} alt={project.name} className="max-w-[150px] max-h-[150px] object-contain"/>
-                    </div>
-                    <div className="flex flex-col pt-5 text-center">
-                        <h1 className="text-[#A0A0A0] whitespace-normal">{project.name}</h1>
+                <button key={project.image} className="px-5 mx-5 hover:bg-[#1E1E1E]" onClick={() => window.open(project.url, "_blank")}>
+                    <div  className="flex flex-col items-center p-5 max-w-[170px] rounded-md hover:bg-[#1E1E1E] cursor-pointer">
+                        <div className="rounded-lg overflow-hidden w-[170px] h-[170px] bg-[#00000030] flex justify-center items-center">
+                            <img key={project.image} src={project.image} alt={project.name} className="max-w-[150px] max-h-[150px] object-contain"/>
+                        </div>
+                        <div className="flex flex-col pt-5 text-center">
+                            <h1 className="text-[#A0A0A0] whitespace-normal">{project.name}</h1>
+                        </div>
                     </div>
                 </button>
             ))}
@@ -261,7 +263,7 @@ function Buttons({selected, setSelected}) {
           key={btn}
           onClick={() => {
               setSelected(index);
-              window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })
+
           }} // select this button
           className={`px-4 py-2 rounded-4xl font-bold transition-colors cursor-pointer ${
             selected === index
@@ -388,7 +390,7 @@ export default function Home() {
             </div>
         </div>
 
-            <div className="flex flex-col items-center justify-between mx-auto">
+            <div className="flex flex-col items-center justify-between mx-auto py-5 lg:py-0">
                 <Title />
             </div>
 

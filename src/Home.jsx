@@ -22,6 +22,7 @@ import DarshSnowImage from './assets/aboutme/snowboard.jpg';
 import cIcon from './assets/languages/c.png';
 import cssIcon from './assets/languages/css.png';
 import htmlIcon from './assets/languages/html.png';
+import dockerIcon from './assets/languages/docker.png';
 import javaIcon from './assets/languages/java.png';
 import javascriptIcon from './assets/languages/javascript.png';
 import pythonIcon from './assets/languages/python.png';
@@ -52,7 +53,7 @@ function ProgrammingLanguages({ setHoveredLang, onPlay }) {
       {image: cIcon, url:"https://www.c-language.org/", name:"C"},
       {image: reactIcon, url:"https://react.dev/", name:"React"},
       {image: tailwindIcon, url:"https://tailwindcss.com/", name:"Tailwind"},
-      {image: htmlIcon, url:"https://www.w3.org/html/", name:"HTML"},
+      {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
       {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
       {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
   ];
@@ -254,7 +255,7 @@ function Socials() {
 }
 
 function Buttons({selected, setSelected}) {
-  const buttons = ["Languages", "About Me", "Projects"];
+  const buttons = ["Skills", "About Me", "Projects"];
 
   return (
     <div className="w-full flex justify-center md:justify-start gap-4 md:pl-10">
@@ -294,7 +295,7 @@ function MusicPlayer({ song, setSong }) {
         {image: cIcon, url:"https://www.c-language.org/", name:"C"},
         {image: reactIcon, url:"https://react.dev/", name:"React"},
         {image: tailwindIcon, url:"https://tailwindcss.com/", name:"Tailwind"},
-        {image: htmlIcon, url:"https://www.w3.org/html/", name:"HTML"},
+        {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
         {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
         {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"},
         {image: DarshImage, url:"w", name:"Academic Weapon"},
@@ -375,7 +376,7 @@ export default function Home() {
             : hoveredLang === "C" ? "bg-gradient-to-t from-[#001219] to-[#005F73]"
             : hoveredLang === "React" ? "bg-gradient-to-t from-[#0A0A0A] to-[#00D8FF]"
             : hoveredLang === "Tailwind" ? "bg-gradient-to-t from-[#021F2A] to-[#38BDF8]"
-            : hoveredLang === "HTML" ? "bg-gradient-to-t from-[#2F0A00] to-[#FF5722]"
+            : hoveredLang === "Docker" ? "bg-gradient-to-t from-[#1D63ED] to-[#FF5722]"
             : hoveredLang === "JavaScript" ? "bg-gradient-to-t from-[#2D2A00] to-[#F7DF1E]"
             : hoveredLang === "CSS" ? "bg-gradient-to-t from-[#001B2E] to-[#2965F1]"
             : selected === 1 ? "bg-gradient-to-t from-[#222222] to-[#121212]"

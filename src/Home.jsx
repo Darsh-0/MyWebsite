@@ -29,6 +29,7 @@ import javascriptIcon from './assets/languages/javascript.png';
 import pythonIcon from './assets/languages/python.png';
 import reactIcon from './assets/languages/react.png';
 import tailwindIcon from './assets/languages/tailwind.png';
+import gitIcon from './assets/languages/git.png';
 
 
 function Title() {
@@ -88,14 +89,19 @@ function ProgrammingLanguages({ setHoveredLang, onPlay }) {
 function AboutMe({onPlay}) {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10">
-            <div className="flex flex-row bg-gradient-to-t from-[#650A00] to-[#913000] rounded-lg flex-1 p-5 gap-5 items-center">
-                <div>
-                    <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
+            <div className="flex flex-col lg:flex-row bg-gradient-to-t from-[#650A00] to-[#913000] rounded-lg flex-1 p-5 gap-5 items-center transition-all duration-300 ease-in-out">
+                <div className="flex-1">
+                    <h1 className="font-[Myfont] font-medium text-white text-3xl">
                         Who Am I?
                     </h1>
                     <h1 className="pt-2 font-[Myfont] font-light text-white">
                         I'm Darsh Gandhi 20 year old Software Engineering student at The{" "}
-                        <a href="https://www.canterbury.ac.nz/" className="text-blue-400 underline" target="_blank" rel="noopener noreferrer">
+                        <a
+                            href="https://www.canterbury.ac.nz/"
+                            className="text-blue-400 underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             University of Canterbury
                         </a>{" "}
                         with the Hiranga Scholarship after completing the International Baccalaureate Program.
@@ -103,32 +109,57 @@ function AboutMe({onPlay}) {
                         university and making fun side projects.
                     </h1>
                 </div>
+                <div className="flex flex-1 justify-center lg:justify-end order-last lg:order-none transition-all duration-300 ease-in-out">
+                    <div className="relative inline-block group mx-auto lg:ml-auto">
+                        <img
+                            src={DarshImage}
+                            className="rounded-md w-full max-w-xs lg:max-w-40 transition-all duration-300 ease-in-out"
+                        />
 
-                <div className="flex flex-row rounded-lg flex-1 p-5 gap-5 items-center">
-                    <div className="relative inline-block group ml-auto flex-shrink-0">
-                        <img src={DarshImage} className="rounded-md max-w-40" />
-
-                        <div onClick={() => {onPlay(8);}} className="absolute bottom-1 right-1">
+                        <div
+                            onClick={() => onPlay(8)}
+                            className="absolute bottom-2 right-2"
+                        >
                             <PlayButton size={50} />
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="bg-gradient-to-t from-[#073D00] to-[#275E00] rounded-lg flex flex-col flex-1 p-5 grid-cols-1">
-                <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
-                    Skills
-                </h1>
-                <h1 className="pt-2 font-[Myfont] font-light text-white">
-                    I am most proficient in Python, Java, and C.
-                    I have had experience working on projects, developing applications in groups.
-                    I am familiar with CI/CD pipelines to streamline development, improve efficiency and reduce manual labour.
-                    Programming using Microcontrollers and Embedded Systems.
-                    I have worked with large databases, managing and querying extensive datasets.
-                </h1>
+
+            <div className="flex flex-col lg:flex-row bg-gradient-to-t from-[#073D00] to-[#275E00] rounded-lg flex-1 p-5 gap-5 items-center transition-all duration-300 ease-in-out">
+                <div className="flex-1">
+                    <h1 className="font-[Myfont] font-medium text-white text-3xl">
+                        Skills
+                    </h1>
+                    <h1 className="pt-2 font-[Myfont] font-light text-white">
+                        I am most proficient in Python, Java, and C.
+                        I have had experience working on projects, developing applications in groups.
+                        I am familiar with CI/CD pipelines to streamline development, improve efficiency and reduce manual labour.
+                        Programming using Microcontrollers and Embedded Systems.
+                        I have worked with large databases, managing and querying extensive datasets.
+                    </h1>
+                </div>
+                <div className="flex flex-1 justify-center lg:justify-end order-last lg:order-none transition-all duration-300 ease-in-out">
+                    <div className="relative inline-block group mx-auto lg:ml-auto">
+                        <img
+                            src={gitIcon}
+                            className="rounded-md w-full max-w-xs lg:max-w-40 transition-all duration-300 ease-in-out"
+                            alt="Skills icon"
+                        />
+                        <div
+                            onClick={() => onPlay(10)}
+                            className="absolute bottom-2 right-2"
+                        >
+                            <PlayButton size={50} />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="flex flex-row bg-gradient-to-t from-[#362870] to-[#524893] rounded-lg flex-1 p-5 gap-5 items-center">
-                <div>
-                    <h1 className="pl font-[Myfont] font-medium text-white text-3xl">
+            <div className="flex flex-col lg:flex-row bg-gradient-to-t from-[#362870] to-[#524893] rounded-lg flex-1 p-5 gap-5 items-center transition-all duration-300 ease-in-out">
+
+
+                <div className="flex-1">
+                    <h1 className="font-[Myfont] font-medium text-white text-3xl">
                         Hobbies / Interest
                     </h1>
                     <h1 className="pt-2 font-[Myfont] font-light text-white">
@@ -143,15 +174,23 @@ function AboutMe({onPlay}) {
                         <li>Listening to music</li>
                     </ul>
                 </div>
-                <div className="flex flex-row rounded-lg flex-1 p-5 gap-5 items-center">
-                    <div className="relative inline-block group ml-auto flex-shrink-0">
-                        <img src={DarshSnowImage} className="rounded-md max-w-40" />
-                        <div onClick={() => {onPlay(9);}} className="absolute bottom-1 right-1">
+                <div className="flex flex-1 justify-center lg:justify-end order-last lg:order-none transition-all duration-300 ease-in-out">
+                    <div className="relative inline-block group mx-auto lg:ml-auto">
+                        <img
+                            src={DarshSnowImage}
+                            className="rounded-md w-full max-w-xs lg:max-w-40 transition-all duration-300 ease-in-out"
+                        />
+
+                        <div
+                            onClick={() => onPlay(9)}
+                            className="absolute bottom-2 right-2"
+                        >
                             <PlayButton size={50} />
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }
@@ -301,7 +340,7 @@ function MusicPlayer({ song, setSong }) {
         {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"},
         {image: DarshImage, url:"w", name:"Academic Weapon"},
         {image: DarshSnowImage, url:"w", name:"Snowy"},
-
+        {image: gitIcon, url:"https://git-scm.com/", name:"Git"},
     ];
 
     return (

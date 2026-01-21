@@ -18,6 +18,7 @@ import TakeAHikeIcon from './assets/projects/TakeAHike.png';
 
 import DarshImage from './assets/aboutme/me.jpg';
 import DarshSnowImage from './assets/aboutme/snowboard.jpg';
+import DarshBoatImage from './assets/aboutme/boat.jpg'
 
 import cIcon from './assets/languages/c.png';
 import cssIcon from './assets/languages/css.png';
@@ -34,7 +35,7 @@ function Title() {
     return (
         <div className="flex flex-col lg:flex-row bg-gradient-to-tr from-[#010203] to-transparent h-auto w-full rounded-lg lg:m-10 pb-5 lg:pb-0 columns-2 items-start justify-start lg:pt-0">
             <a className="p-4 lg:pl-4 w-[305px] h-[305px] mx-auto lg:mx-0">
-                <img src="https://placehold.co/305x305" alt="Placeholder"></img>
+                <img src={DarshBoatImage} alt="Me on boat"></img>
             </a>
             <div className="flex flex-col lg:pl-10 items-center lg:items-start text-center lg:text-left">
                 <h1 className="text-white pt-10 pl-0.5 font-[MyFont] font-ultrabold">Playlist</h1>

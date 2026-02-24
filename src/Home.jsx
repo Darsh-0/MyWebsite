@@ -167,6 +167,7 @@ function AboutMe({onPlay}) {
                     </h1>
                     <ul className="list-disc pl-5 pt-2 text-white space-y-1 font-[Myfont] font-light">
                         <li>Football</li>
+                        <li>Hockey</li>
                         <li>Snowboarding</li>
                         <li>Gym</li>
                         <li>Chess (rated 1700+ on Chess.com)</li>

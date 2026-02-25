@@ -30,6 +30,7 @@ import pythonIcon from './assets/languages/python.png';
 import reactIcon from './assets/languages/react.png';
 import tailwindIcon from './assets/languages/tailwind.png';
 import gitIcon from './assets/languages/git.png';
+import csIcon from './assets/languages/cs.png';
 
 
 function Title() {
@@ -54,7 +55,7 @@ function ProgrammingLanguages({ setHoveredLang, onPlay }) {
       {image: javaIcon, url:"https://www.java.com/en/", name:"Java"},
       {image: cIcon, url:"https://www.c-language.org/", name:"C"},
       {image: reactIcon, url:"https://react.dev/", name:"React"},
-      {image: tailwindIcon, url:"https://tailwindcss.com/", name:"Tailwind"},
+      {image: csIcon, url:"https://dotnet.microsoft.com/en-us/languages/csharp", name:"C#"},
       {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
       {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
       {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
@@ -335,7 +336,7 @@ function MusicPlayer({ song, setSong }) {
         {image: javaIcon, url:"https://www.java.com/en/", name:"Java"},
         {image: cIcon, url:"https://www.c-language.org/", name:"C"},
         {image: reactIcon, url:"https://react.dev/", name:"React"},
-        {image: tailwindIcon, url:"https://tailwindcss.com/", name:"Tailwind"},
+        {image: csIcon, url:"https://dotnet.microsoft.com/en-us/languages/csharp", name:"C#"},
         {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
         {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
         {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"},
@@ -416,7 +417,7 @@ export default function Home() {
             : hoveredLang === "Java" ? "bg-gradient-to-t from-[#052449] to-[#2A1400]"
             : hoveredLang === "C" ? "bg-gradient-to-t from-[#001219] to-[#005F73]"
             : hoveredLang === "React" ? "bg-gradient-to-t from-[#0A0A0A] to-[#00D8FF]"
-            : hoveredLang === "Tailwind" ? "bg-gradient-to-t from-[#021F2A] to-[#38BDF8]"
+            : hoveredLang === "C#" ? "bg-gradient-to-t from-[#68217A] to-[#9B4F96]"
             : hoveredLang === "Docker" ? "bg-gradient-to-t from-[#1D63ED] to-[#FF5722]"
             : hoveredLang === "JavaScript" ? "bg-gradient-to-t from-[#2D2A00] to-[#F7DF1E]"
             : hoveredLang === "CSS" ? "bg-gradient-to-t from-[#001B2E] to-[#2965F1]"

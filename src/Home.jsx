@@ -88,6 +88,17 @@ function ProgrammingLanguages({ setHoveredLang, onPlay }) {
 }
 
 function AboutMe({onPlay}) {
+
+    const [rating, setRating] = useState(null);
+    useEffect(() => {
+        fetch(`https://api.chess.com/pub/player/mrlittlegamer/stats`)
+          .then(res => res.json())
+          .then(data => {
+            setRating(data.chess_rapid?.last?.rating);
+          })
+          .catch(err => console.error(err));
+      }, "mrlittlegamer");
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10">
             <div className="flex flex-col lg:flex-row bg-gradient-to-t from-[#650A00] to-[#913000] rounded-lg flex-1 p-5 gap-5 items-center transition-all duration-300 ease-in-out">
@@ -171,7 +182,7 @@ function AboutMe({onPlay}) {
                         <li>Hockey</li>
                         <li>Snowboarding</li>
                         <li>Gym</li>
-                        <li>Chess (rated 1700+ on Chess.com)</li>
+                        <li>Chess (rated {rating ? `${rating}` : "Loading..."} on chess.com)</li>
                         <li>Photoshop / Premiere Pro</li>
                         <li>Listening to music</li>
                     </ul>

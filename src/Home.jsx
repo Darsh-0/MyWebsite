@@ -15,6 +15,7 @@ import CoffeeCatcherIcon from './assets/projects/CoffeeCatcher.png';
 import DarshifyIcon from './assets/projects/darshify.png'
 import UCFKIcon from './assets/projects/UCFK.png';
 import TakeAHikeIcon from './assets/projects/TakeAHike.png';
+import ChessEloHiderIcon from './assets/projects/ChessEloHider.png';
 
 import DarshImage from './assets/aboutme/me.jpg';
 import DarshSnowImage from './assets/aboutme/snowboard.jpg';
@@ -216,6 +217,7 @@ function Projects() {
         {name: "Portofio Website", image: DarshifyIcon, url:"https://github.com/Darsh-0/MyWebsite"},
         {name: "Pong On UCFK4 Microcontroller", image: UCFKIcon, url:"https://github.com/Darsh-0/Pong-on-UCFK4"},
         {name: "TakeAHike", image: TakeAHikeIcon, url:"https://github.com/Darsh-0/TakeAHike"},
+        {name: "Chess Elo Hider", image: ChessEloHiderIcon, url:"https://github.com/Darsh-0/Chess-elo-hider"},
     ];
     return (
         <div className="grid gap-4 justify-items-center [grid-template-columns:repeat(auto-fit,minmax(170px,1fr))]">

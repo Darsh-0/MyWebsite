@@ -1,6 +1,7 @@
 import HomeIcon from "./HomeIcon";
 import resume from "./assets/pdfs/Resume.pdf";
 import DarshifyIcon from "./assets/projects/darshify.png";
+import { Helmet } from 'react-helmet-async'
 
 export default function Resume() {
     const pdfSupported =
@@ -8,6 +9,13 @@ export default function Resume() {
         navigator.mimeTypes["application/pdf"] !== undefined;
 
     return (
+        <>
+        <Helmet>
+            <title>Darsh Gandhi Resume</title>
+            <meta name="description" content="View Darsh Gandhi's resume and experience." />
+            <meta property="og:title" content="Resume | Darsh Gandhi" />
+            <meta property="og:url" content="https://darshgandhi.dev/resume" />
+        </Helmet>
         <div className="flex flex-col h-screen bg-black border-l-[14px] border-r-[14px]">
             <div className="flex flex-col bg-gradient-to-t from-[#121212] to-[#052449] rounded-2xl overflow-hidden flex-1">
                 <div className="bg-black p-2 relative flex items-center">
@@ -40,5 +48,6 @@ export default function Resume() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

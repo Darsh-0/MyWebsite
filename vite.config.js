@@ -2,13 +2,19 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import mkcert from 'vite-plugin-mkcert'
-import { BrowserRouter } from 'react-router-dom'
+import sitemap from 'vite-plugin-sitemap'
+import { mkdirSync } from 'fs'
 
-// https://vite.dev/config/
+mkdirSync('dist', { recursive: true })
+
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
     mkcert(),
-  ],
+    sitemap({
+      hostname: 'https://darshgandhi.dev',
+      dynamicRoutes: ['/', '/resume']
+    })
+  ]
 })

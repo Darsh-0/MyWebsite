@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet-async'
 import resumeIcon from './assets/resume.svg';
 import linkedinIcon from './assets/linkedin.svg';
 import githubIcon from './assets/github.svg';
@@ -423,6 +424,14 @@ export default function Home() {
     };
 
     return (
+    <>
+    <Helmet>
+        <title>Darsh Gandhi</title>
+	<meta name="description" content="Hi, I'm Darsh Gandhi — a developer based in NZ." />
+	<meta property="og:title" content="Darsh Gandhi | Developer" />
+	<meta property="og:description" content="Hi, I'm Darsh Gandhi — a developer based in NZ." />
+        <meta property="og:url" content="https://darshgandhi.dev" />
+    </Helmet>
     <div className="flex flex-col overflow-x-hidden bg-black border-l-[14px] border-r-[14px]">
         <div
             className={`flex flex-col overflow-hidden min-h-screen transition-colors duration-800 overflow-y-scroll
@@ -463,5 +472,6 @@ export default function Home() {
         <MusicPlayer song={song} setSong={setSong}/>
         </div>
     </div>
+    </>
   );
 }

@@ -17,6 +17,7 @@ import DarshifyIcon from './assets/projects/darshify.png'
 import UCFKIcon from './assets/projects/UCFK.png';
 import TakeAHikeIcon from './assets/projects/TakeAHike.png';
 import ChessEloHiderIcon from './assets/projects/ChessEloHider.png';
+import ChessBot from './assets/projects/chessWebsite.png';
 
 import DarshImage from './assets/aboutme/me.jpg';
 import DarshSnowImage from './assets/aboutme/snowboard.jpg';
@@ -28,6 +29,7 @@ import htmlIcon from './assets/languages/html.png';
 import dockerIcon from './assets/languages/docker.png';
 import javaIcon from './assets/languages/java.png';
 import javascriptIcon from './assets/languages/javascript.png';
+import typescriptIcon from './assets/languages/typescript.png';
 import pythonIcon from './assets/languages/python.png';
 import reactIcon from './assets/languages/react.png';
 import tailwindIcon from './assets/languages/tailwind.png';
@@ -59,7 +61,7 @@ function ProgrammingLanguages({ setHoveredLang, onPlay }) {
       {image: reactIcon, url:"https://react.dev/", name:"React"},
       {image: csIcon, url:"https://dotnet.microsoft.com/en-us/languages/csharp", name:"C#"},
       {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
-      {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
+      {image: typescriptIcon, url:"https://www.typescriptlang.org/", name:"TypeScript"},
       {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
   ];
 
@@ -219,6 +221,7 @@ function Projects() {
         {name: "Pong On UCFK4 Microcontroller", image: UCFKIcon, url:"https://github.com/Darsh-0/Pong-on-UCFK4"},
         {name: "TakeAHike", image: TakeAHikeIcon, url:"https://github.com/Darsh-0/TakeAHike"},
         {name: "Chess Elo Hider", image: ChessEloHiderIcon, url:"https://github.com/Darsh-0/Chess-elo-hider"},
+        {name: "Chess Bot", image: ChessBot, url:"https://chess.darshgandhi.dev"},
     ];
     return (
         <div className="grid gap-4 justify-items-center [grid-template-columns:repeat(auto-fit,minmax(170px,1fr))]">
@@ -352,7 +355,7 @@ function MusicPlayer({ song, setSong }) {
         {image: reactIcon, url:"https://react.dev/", name:"React"},
         {image: csIcon, url:"https://dotnet.microsoft.com/en-us/languages/csharp", name:"C#"},
         {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
-        {image: javascriptIcon, url:"https://javascript.info/", name:"JavaScript"},
+        {image: typescriptIcon, url:"https://www.typescriptlang.org/", name:"TypeScript"},
         {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"},
         {image: DarshImage, url:"w", name:"Academic Weapon"},
         {image: DarshSnowImage, url:"w", name:"Snowy"},
@@ -441,7 +444,7 @@ export default function Home() {
             : hoveredLang === "React" ? "bg-gradient-to-t from-[#0A0A0A] to-[#00D8FF]"
             : hoveredLang === "C#" ? "bg-gradient-to-t from-[#68217A] to-[#9B4F96]"
             : hoveredLang === "Docker" ? "bg-gradient-to-t from-[#1D63ED] to-[#FF5722]"
-            : hoveredLang === "JavaScript" ? "bg-gradient-to-t from-[#2D2A00] to-[#F7DF1E]"
+            : hoveredLang === "TypeScript" ? "bg-gradient-to-t from-[#AAAAAA] to-[#0079CA]"
             : hoveredLang === "CSS" ? "bg-gradient-to-t from-[#001B2E] to-[#2965F1]"
             : selected === 1 ? "bg-gradient-to-t from-[#222222] to-[#121212]"
             : "bg-gradient-to-t from-[#121212] to-[#052449]"}`}

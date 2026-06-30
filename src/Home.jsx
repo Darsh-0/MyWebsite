@@ -187,7 +187,14 @@ function AboutMe({onPlay}) {
                         <li>Snowboarding</li>
                         <li>Gym</li>
                         <li>Chess (rated {rating ? `${rating}` : "Loading..."} on chess.com)</li>
-                        <li>Photoshop / Premiere Pro</li>
+                        <li><a
+                                                        href="https://leetcode.com/u/darsh_gandhi/"
+                                                        className="text-blue-400 underline"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        Leetcode
+                                                    </a>{" "}</li>
                         <li>Listening to music</li>
                     </ul>
                 </div>

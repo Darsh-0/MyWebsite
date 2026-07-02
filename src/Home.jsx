@@ -108,9 +108,11 @@ function ProgrammingLanguages({ setHoveredLang, onPlay }) {
       gap-5"
     >
       {logos.map((logo, index) => (
-        <a key={logo.name} href={logo.url} onMouseEnter={() => setHoveredLang(logo.name)} onMouseLeave={() => setHoveredLang(null)} className="relative group flex flex-row items-center bg-[#FFFFFF20] rounded-md w-full transition-transform duration-50 hover:scale-105 gap-5">
+        <a key={logo.name} href={logo.url} onMouseEnter={() => setHoveredLang(logo.name)} onMouseLeave={() => setHoveredLang(null)} className="relative group flex flex-row items-center bg-[#FFFFFF20] rounded-md w-full transition-transform duration-50 hover:scale-105 gap-[clamp(0.75rem,2vw,5rem)]">
             <img key={logo.image} src={logo.image} alt={logo.name} className="object-contain h-12 w-12 md:h-20 md:w-20 bg-white p-2 rounded-l-md shadow-[10px_0_20px_rgba(0,0,0,0.4)]" />
-            <h1 className="font-[Myfont] text-white mr-30 text-[17px] md:text-[20px] font-normal">{logo.name}</h1>
+            <h1 className="flex-1 font-[Myfont] text-white font-normal text-[clamp(0.700rem,2vw,1.25rem)] truncate">
+                {logo.name}
+            </h1>
             <div onClick={(e) => {
                          e.preventDefault();  // prevent <a> navigation
                          e.stopPropagation(); // prevent event from reaching parent <a>

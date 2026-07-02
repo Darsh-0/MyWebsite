@@ -19,6 +19,12 @@ import TakeAHikeIcon from './assets/projects/TakeAHike.png';
 import ChessEloHiderIcon from './assets/projects/ChessEloHider.png';
 import ChessBot from './assets/projects/chessWebsite.png';
 
+import ChessBotSC from './assets/projects/chessWebsiteSC.png';
+import CoffeeCatcherIconSC from './assets/projects/CoffeeCatcherSC.png';
+import TakeAHikeSC from './assets/projects/TakeAHikeSC.png';
+import ChessEloHiderSC from './assets/projects/ChessEloHiderSC.png';
+import DarshifySC from './assets/projects/DarshifySC.png'
+
 import DarshImage from './assets/aboutme/me.jpg';
 import DarshSnowImage from './assets/aboutme/snowboard.jpg';
 import DarshBoatImage from './assets/aboutme/boat.jpg'
@@ -36,6 +42,44 @@ import tailwindIcon from './assets/languages/tailwind.png';
 import gitIcon from './assets/languages/git.png';
 import csIcon from './assets/languages/cs.png';
 
+import Banner from './Banner';
+import BannerRow from './BannerRow';
+
+const logos = [
+      {image: pythonIcon, url:"https://www.python.org/", name:"Python"},
+      {image: javaIcon, url:"https://www.java.com/en/", name:"Java"},
+      {image: cIcon, url:"https://www.c-language.org/", name:"C"},
+      {image: reactIcon, url:"https://react.dev/", name:"React"},
+      {image: csIcon, url:"https://dotnet.microsoft.com/en-us/languages/csharp", name:"C#"},
+      {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
+      {image: typescriptIcon, url:"https://www.typescriptlang.org/", name:"TypeScript"},
+      {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
+];
+
+const MyProjects = [
+    {name: "Spotify Manager Bot", subtitle: "Python", description: "A simple bot to manage all my spotify songs",thumbnail: SpotifyManagerIcon, image: SpotifyManagerIcon, url:"https://github.com/Darsh-0/Spotify-Manager-Bot"},
+    {name: "Coffee Catcher", subtitle: "Python", description: "A Game where you have to catch all the coffee you can", thumbnail: CoffeeCatcherIcon, image: CoffeeCatcherIconSC, url:"https://github.com/Darsh-0/Coffee_Catcher"},
+    {name: "Portofio Website", subtitle: "React with Tailwind", description: "My website for showing off all my cool projects", thumbnail: DarshifyIcon, image: DarshifySC, url:"https://github.com/Darsh-0/MyWebsite"},
+    {name: "Pong On UCFK4 Microcontroller", subtitle: "C", description: "An low level embedded systems project combining hardware and software", thumbnail: UCFKIcon, image: UCFKIcon, url:"https://github.com/Darsh-0/Pong-on-UCFK4"},
+    {name: "TakeAHike", subtitle: "Java with JavaFX and ArcGIS", description: "An application to navigate though all of the trails in New Zealand", thumbnail: TakeAHikeIcon, image: TakeAHikeSC, url:"https://github.com/Darsh-0/TakeAHike"},
+    {name: "Chess Elo Hider", subtitle: "JavaScript", description: "An extension made to help you gain elo while playing chess online", thumbnail: ChessEloHiderIcon, image: ChessEloHiderSC, url:"https://github.com/Darsh-0/Chess-elo-hider"},
+    {name: "Chess Bot", subtitle: "C#, JavaScript, React", description: "My chess bot programmed from scratch, can you beat it?", thumbnail: ChessBot, image: ChessBotSC, url:"https://chess.darshgandhi.dev"},
+];
+
+function FeaturedProject({ index }) {
+    const project = MyProjects[index];
+
+    return (
+        <Banner
+            title={project.name}
+            subtitle={project.subtitle}
+            thumbnail={project.thumbnail}
+            image={project.image}
+            description="View on GitHub"
+            onClick={() => window.open(project.url, "_blank")}
+        />
+    );
+}
 
 function Title() {
     return (
@@ -54,17 +98,6 @@ function Title() {
 }
 
 function ProgrammingLanguages({ setHoveredLang, onPlay }) {
-  const logos = [
-      {image: pythonIcon, url:"https://www.python.org/", name:"Python"},
-      {image: javaIcon, url:"https://www.java.com/en/", name:"Java"},
-      {image: cIcon, url:"https://www.c-language.org/", name:"C"},
-      {image: reactIcon, url:"https://react.dev/", name:"React"},
-      {image: csIcon, url:"https://dotnet.microsoft.com/en-us/languages/csharp", name:"C#"},
-      {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
-      {image: typescriptIcon, url:"https://www.typescriptlang.org/", name:"TypeScript"},
-      {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
-  ];
-
   return (
     <div className="grid
       grid-cols-2        /* Very small screens: 2 per row */
@@ -221,30 +254,17 @@ function AboutMe({onPlay}) {
 
 
 function Projects() {
-    const MyProjects = [
-        {name: "Spotify Manager Bot", image: SpotifyManagerIcon, url:"https://github.com/Darsh-0/Spotify-Manager-Bot"},
-        {name: "Coffee Catcher", image: CoffeeCatcherIcon, url:"https://github.com/Darsh-0/Coffee_Catcher"},
-        {name: "Portofio Website", image: DarshifyIcon, url:"https://github.com/Darsh-0/MyWebsite"},
-        {name: "Pong On UCFK4 Microcontroller", image: UCFKIcon, url:"https://github.com/Darsh-0/Pong-on-UCFK4"},
-        {name: "TakeAHike", image: TakeAHikeIcon, url:"https://github.com/Darsh-0/TakeAHike"},
-        {name: "Chess Elo Hider", image: ChessEloHiderIcon, url:"https://github.com/Darsh-0/Chess-elo-hider"},
-        {name: "Chess Bot", image: ChessBot, url:"https://chess.darshgandhi.dev"},
-    ];
+    const projectBanners = MyProjects.map((project) => ({
+        title: project.name,
+        subtitle: project.subtitle,
+        thumbnail: project.thumbnail,
+        image: project.image,
+        description: project.description,
+        onClick: () => window.open(project.url, "_blank"),
+    }));
+
     return (
-        <div className="grid gap-4 justify-items-center [grid-template-columns:repeat(auto-fit,minmax(170px,1fr))]">
-            {MyProjects.map((project) => (
-                <button key={project.image} className="px-5 mx-5 hover:bg-[#1E1E1E]" onClick={() => window.open(project.url, "_blank")}>
-                    <div  className="flex flex-col items-center p-5 max-w-[170px] rounded-md hover:bg-[#1E1E1E] cursor-pointer">
-                        <div className="rounded-lg overflow-hidden w-[170px] h-[170px] bg-[#00000030] flex justify-center items-center">
-                            <img key={project.image} src={project.image} alt={project.name} className="max-w-[150px] max-h-[150px] object-contain"/>
-                        </div>
-                        <div className="flex flex-col pt-5 text-center">
-                            <h1 className="text-[#A0A0A0] whitespace-normal">{project.name}</h1>
-                        </div>
-                    </div>
-                </button>
-            ))}
-        </div>
+        <BannerRow banners={projectBanners} />
     );
 }
 
@@ -345,7 +365,7 @@ function Buttons({selected, setSelected}) {
   );
 }
 
-function MusicPlayer({ song, setSong }) {
+function MusicPlayer({ song, setSong, showPlayer, setShowPlayer }) {
     const [currentTime, setCurrentTime] = useState(0);
     const upperLimit = 123;
     const [playing, setPlaying] = useState(true);
@@ -354,70 +374,101 @@ function MusicPlayer({ song, setSong }) {
         setCurrentTime(0);
     }, [song]);
 
-
-    const logos = [
-        {image: pythonIcon, url:"https://www.python.org/", name:"Python"},
-        {image: javaIcon, url:"https://www.java.com/en/", name:"Java"},
-        {image: cIcon, url:"https://www.c-language.org/", name:"C"},
-        {image: reactIcon, url:"https://react.dev/", name:"React"},
-        {image: csIcon, url:"https://dotnet.microsoft.com/en-us/languages/csharp", name:"C#"},
-        {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
-        {image: typescriptIcon, url:"https://www.typescriptlang.org/", name:"TypeScript"},
-        {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"},
-        {image: DarshImage, url:"w", name:"Academic Weapon"},
-        {image: DarshSnowImage, url:"w", name:"Snowy"},
-        {image: gitIcon, url:"https://git-scm.com/", name:"Git"},
-    ];
-
     return (
-        <div className="grid grid-cols-3 grid-rows-2 fixed bottom-0 left-0 pt-4 w-full bg-black text-white hidden md:grid">
-            {/* Left: Song info */}
-            <div className="col-start-1 row-start-1 row-span-2 pl-5 flex items-center gap-4 pb-3">
-                <div className="rounded-lg inline-block bg-white overflow-hidden w-18 h-18">
-                    <img src={logos[song].image} className="w-full h-full object-contain object-center rounded-lg" alt="Darshify"/>
+        <div className="fixed bottom-0 left-0 w-full hidden md:block z-50">
+            {/* Ribbon toggle - tracks the top edge of the player */}
+            <div
+                className={`absolute right-10 transition-all duration-300 ease-in-out ${
+                    showPlayer ? "bottom-24" : "bottom-0"
+                }`}
+            >
+                <button
+                    onClick={() => setShowPlayer((prev) => !prev)}
+                    className="flex justify-center items-center bg-[#6F6F6F] hover:bg-[#3A3A3A] transition-colors duration-150 text-black font-bold py-1.5 px-4 rounded-t-lg cursor-pointer"
+                >
+                    <h1 className="font-[Myfont] text-sm">
+                        {showPlayer ? "▼  Hide Player" : "▲  Show Player"}
+                    </h1>
+                </button>
+            </div>
+
+            {/* Player panel */}
+            <div
+                className={`grid grid-cols-3 grid-rows-2 h-24 pt-4 w-full bg-black text-white transition-transform duration-300 ease-in-out ${
+                    showPlayer ? "translate-y-0" : "translate-y-full"
+                }`}
+            >
+                {/* Left: Song info */}
+                <div className="col-start-1 row-start-1 row-span-2 pl-5 flex items-center gap-4 pb-3">
+                    <div className="rounded-lg inline-block bg-white overflow-hidden w-18 h-18">
+                        <img src={logos[song].image} className="w-full h-full object-contain object-center rounded-lg" alt="Darshify"/>
+                    </div>
+                    <div className="flex flex-col">
+                        <h1>{logos[song].name}</h1>
+                        <h1 className="text-[#929292]">Darsh Gandhi</h1>
+                    </div>
                 </div>
-                <div className="flex flex-col">
-                    <h1>{logos[song].name}</h1>
-                    <h1 className="text-[#929292]">Darsh Gandhi</h1>
+
+                {/* Center: Player buttons */}
+                <div className="col-start-2 row-start-1 flex justify-center items-center">
+                    <PlayerButtons playing={playing} setPlaying={setPlaying} song={song} setSong={setSong} currentTime={currentTime} setCurrentTime={setCurrentTime} totalSongs={logos.length}/>
                 </div>
-            </div>
 
-            {/* Center: Player buttons */}
-            <div className="col-start-2 row-start-1 flex justify-center items-center">
-                <PlayerButtons playing={playing} setPlaying={setPlaying} song={song} setSong={setSong} currentTime={currentTime} setCurrentTime={setCurrentTime} totalSongs={logos.length}/>
-            </div>
-
-            {/* Timer left */}
-            <div className="col-start-1 row-start-2 flex items-center justify-end mr-4">
-                <h1>
-                    {Math.floor(currentTime/60)}:
-                    {String(Math.trunc(currentTime % 60)).padStart(2, "0")}
-                </h1>
-            </div>
-
-            {/* Timer progress bar */}
-            <div className="col-start-2 row-start-2 flex items-center w-full">
-                <div className="bg-[#4D4D4D] rounded-full h-2 w-full relative">
-                    <a
-                        className="bg-white h-2 rounded-full absolute top-0 left-0 transition-all duration-300"
-                        style={{ width: `${(currentTime / upperLimit) * 100}%` }}
-                    />
-                    <Timer
-                        upperLimit={upperLimit}
-                        currentSeconds={currentTime}
-                        setCurrentSeconds={setCurrentTime}
-                        playing={playing}
-                        onEnd={() => setSong((prev) => (prev + 1) % logos.length)}
-                    />
+                {/* Right: Info tooltip icon */}
+                <div className="col-start-3 row-start-1 flex items-center justify-end pr-5">
+                    <div className="relative group">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="w-5 h-5 text-[#929292] hover:text-white transition-colors cursor-help"
+                        >
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span className="absolute bottom-full right-0 mb-2 w-max max-w-[180px] bg-gray-800 text-white text-xs text-center px-3 py-1.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                            Just for show — this player doesn't actually play music!
+                        </span>
+                    </div>
                 </div>
-            </div>
 
-            {/* Timer right: total */}
-            <div className="col-start-3 ml-4 row-start-2 flex justify-start items-center">
-                <h1>
-                    {Math.floor(upperLimit/60)}:
-                    {String(upperLimit % 60).padStart(2, "0")}
-                </h1>
+                {/* Timer left */}
+                <div className="col-start-1 row-start-2 flex items-center justify-end mr-4">
+                    <h1>
+                        {Math.floor(currentTime/60)}:
+                        {String(Math.trunc(currentTime % 60)).padStart(2, "0")}
+                    </h1>
+                </div>
+
+                {/* Timer progress bar */}
+                <div className="col-start-2 row-start-2 flex items-center w-full">
+                    <div className="bg-[#4D4D4D] rounded-full h-2 w-full relative">
+                        <a
+                            className="bg-white h-2 rounded-full absolute top-0 left-0 transition-all duration-300"
+                            style={{ width: `${(currentTime / upperLimit) * 100}%` }}
+                        />
+                        <Timer
+                            upperLimit={upperLimit}
+                            currentSeconds={currentTime}
+                            setCurrentSeconds={setCurrentTime}
+                            playing={playing}
+                            onEnd={() => setSong((prev) => (prev + 1) % logos.length)}
+                        />
+                    </div>
+                </div>
+
+                {/* Timer right: total */}
+                <div className="col-start-3 ml-4 row-start-2 flex justify-start items-center">
+                    <h1>
+                        {Math.floor(upperLimit/60)}:
+                        {String(upperLimit % 60).padStart(2, "0")}
+                    </h1>
+                </div>
             </div>
         </div>
     );
@@ -428,6 +479,11 @@ export default function Home() {
     const [selected, setSelected] = useState(0);
     const [hoveredLang, setHoveredLang] = useState(null);
     const [song, setSong] = useState(0);
+    const [showPlayer, setShowPlayer] = useState(false);
+
+    const project1 = MyProjects[6];
+    const project2 = MyProjects[4];
+    const project3 = MyProjects[2];
 
     const onPlay = (index) => {
         setSong(index);
@@ -474,12 +530,46 @@ export default function Home() {
             <div className="flex-1 overflow-y-auto px-2 md:px-10 pt-5 md:pt-0 pb-[140px]">
                 <Buttons selected={selected} setSelected={setSelected} />
                 <div className="p-4 md:p-8">
-                    {selected === 0 && <ProgrammingLanguages setHoveredLang={setHoveredLang} onPlay={(index) => setSong(index)}/>}
+                    {selected === 0 && (
+                        <>
+                            <ProgrammingLanguages
+                                setHoveredLang={setHoveredLang}
+                                onPlay={(index) => setSong(index)}
+                            />
+                            <h1 className="pt-5 text-white text-2xl font-[MyFont] font-medium">Featured Projects</h1>
+                            <div className="flex pt-8 justify-center w-full space-x-5">
+                                <Banner
+                                    title={project1.name}
+                                    subtitle={project1.subtitle}
+                                    thumbnail={project1.thumbnail}
+                                    image={project1.image}
+                                    description={project1.description}
+                                    onClick={() => window.open(project1.url, "_blank")}
+                                />
+                                <Banner
+                                    title={project2.name}
+                                    subtitle={project1.subtitle}
+                                    thumbnail={project2.thumbnail}
+                                    image={project2.image}
+                                    description={project2.description}
+                                    onClick={() => window.open(project2.url, "_blank")}
+                                />
+                                <Banner
+                                    title={project3.name}
+                                    subtitle={project1.subtitle}
+                                    thumbnail={project3.thumbnail}
+                                    image={project3.image}
+                                    description={project3.description}
+                                    onClick={() => window.open(project3.url, "_blank")}
+                                />
+                            </div>
+                        </>
+                    )}
                     {selected === 1 && <AboutMe onPlay={onPlay}/>}
                     {selected === 2 && <Projects />}
                 </div>
             </div>
-        <MusicPlayer song={song} setSong={setSong}/>
+        <MusicPlayer song={song} setSong={setSong} showPlayer={showPlayer} setShowPlayer={setShowPlayer}/>
         </div>
     </div>
     </>

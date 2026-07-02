@@ -537,7 +537,7 @@ export default function Home() {
                                 onPlay={(index) => setSong(index)}
                             />
                             <h1 className="pt-5 text-white text-2xl font-[MyFont] font-medium">Featured Projects</h1>
-                            <div className="flex pt-8 justify-center w-full space-x-5">
+                            <div className="flex flex-row flex-wrap gap-4 justify-center w-full space-x-5">
                                 <Banner
                                     title={project1.name}
                                     subtitle={project1.subtitle}

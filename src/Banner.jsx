@@ -3,7 +3,7 @@ export default function Banner({ title, subtitle, thumbnail, image, description,
     return (
         <button
             onClick={onClick}
-            className="group relative flex flex-col justify-end bg-[#181818] hover:bg-[#282828] rounded-2xl w-full max-w-[280px] aspect-[3/4] overflow-hidden transition-all duration-150 hover:scale-[1.02] cursor-pointer text-left p-4"
+            className="group relative flex flex-col justify-end bg-[#181818] hover:bg-[#282828] rounded-2xl w-[280px] h-[373px] flex-shrink-0 overflow-hidden transition-all duration-150 hover:scale-[1.02] cursor-pointer text-left p-4"
         >
             {/* Background image */}
             <img

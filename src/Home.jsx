@@ -539,7 +539,7 @@ export default function Home() {
                                 onPlay={(index) => setSong(index)}
                             />
                             <h1 className="pt-5 text-white text-2xl font-[MyFont] font-medium">Featured Projects</h1>
-                            <div className="flex flex-row flex-wrap gap-4 justify-center w-full space-x-5">
+                            <div className="flex flex-row flex-wrap gap-4 justify-center w-full">
                                 <Banner
                                     title={project1.name}
                                     subtitle={project1.subtitle}
@@ -550,7 +550,7 @@ export default function Home() {
                                 />
                                 <Banner
                                     title={project2.name}
-                                    subtitle={project1.subtitle}
+                                    subtitle={project2.subtitle}
                                     thumbnail={project2.thumbnail}
                                     image={project2.image}
                                     description={project2.description}
@@ -558,7 +558,7 @@ export default function Home() {
                                 />
                                 <Banner
                                     title={project3.name}
-                                    subtitle={project1.subtitle}
+                                    subtitle={project3.subtitle}
                                     thumbnail={project3.thumbnail}
                                     image={project3.image}
                                     description={project3.description}

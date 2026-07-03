@@ -66,6 +66,14 @@ const MyProjects = [
     {name: "Chess Bot", subtitle: "C#, JavaScript, React", description: "My chess bot programmed from scratch, can you beat it?", thumbnail: ChessBot, image: ChessBotSC, url:"https://chess.darshgandhi.dev"},
 ];
 
+const aboutMeTracks = [
+  { image: DarshImage, name: "Who Am I" },
+  { image: DarshSnowImage, name: "Snowboarding" },
+  { image: gitIcon, name: "Skills" },
+];
+
+const allTracks = [...logos, ...aboutMeTracks];
+
 function FeaturedProject({ index }) {
     const project = MyProjects[index];
 
@@ -136,7 +144,7 @@ function AboutMe({onPlay}) {
             setRating(data.chess_rapid?.last?.rating);
           })
           .catch(err => console.error(err));
-      }, "mrlittlegamer");
+      }, []);
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10">
@@ -403,17 +411,17 @@ function MusicPlayer({ song, setSong, showPlayer, setShowPlayer }) {
                 {/* Left: Song info */}
                 <div className="col-start-1 row-start-1 row-span-2 pl-5 flex items-center gap-4 pb-3">
                     <div className="rounded-lg inline-block bg-white overflow-hidden w-18 h-18">
-                        <img src={logos[song].image} className="w-full h-full object-contain object-center rounded-lg" alt="Darshify"/>
+                        <img src={allTracks[song].image} className="w-full h-full object-contain object-center rounded-lg" alt="Darshify"/>
                     </div>
                     <div className="flex flex-col">
-                        <h1>{logos[song].name}</h1>
+                        <h1>{allTracks[song].name}</h1>
                         <h1 className="text-[#929292]">Darsh Gandhi</h1>
                     </div>
                 </div>
 
                 {/* Center: Player buttons */}
                 <div className="col-start-2 row-start-1 flex justify-center items-center">
-                    <PlayerButtons playing={playing} setPlaying={setPlaying} song={song} setSong={setSong} currentTime={currentTime} setCurrentTime={setCurrentTime} totalSongs={logos.length}/>
+                    <PlayerButtons playing={playing} setPlaying={setPlaying} song={song} setSong={setSong} currentTime={currentTime} setCurrentTime={setCurrentTime} totalSongs={allTracks.length}/>
                 </div>
 
                 {/* Right: Info tooltip icon */}

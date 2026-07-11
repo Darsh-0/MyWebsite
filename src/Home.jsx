@@ -385,10 +385,10 @@ function MusicPlayer({ song, setSong, showPlayer, setShowPlayer }) {
     }, [song]);
 
     return (
-        <div className="fixed bottom-0 left-0 w-full hidden md:block z-50">
+        <div className={`fixed bottom-0 left-0 w-full hidden md:block z-50 ${showPlayer ? "" : "pointer-events-none"}`}>
             {/* Ribbon toggle - tracks the top edge of the player */}
             <div
-                className={`absolute right-10 transition-all duration-300 ease-in-out ${
+                className={`absolute right-10 transition-all duration-300 ease-in-out pointer-events-auto ${
                     showPlayer ? "bottom-24" : "bottom-0"
                 }`}
             >
@@ -405,7 +405,7 @@ function MusicPlayer({ song, setSong, showPlayer, setShowPlayer }) {
             {/* Player panel */}
             <div
                 className={`grid grid-cols-3 grid-rows-2 h-24 pt-4 w-full bg-black text-white transition-transform duration-300 ease-in-out ${
-                    showPlayer ? "translate-y-0" : "translate-y-full"
+                    showPlayer ? "translate-y-0 pointer-events-auto" : "translate-y-full pointer-events-none"
                 }`}
             >
                 {/* Left: Song info */}

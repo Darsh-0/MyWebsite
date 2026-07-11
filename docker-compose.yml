@@ -7,3 +7,21 @@ services:
     ports:
       - "4173:4173"
     restart: unless-stopped
+    networks:
+      - default
+      - shared-tunnel-net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+    restart: unless-stopped
+    depends_on:
+      - website
+    networks:
+      - default
+      - shared-tunnel-net
+
+networks:
+  shared-tunnel-net:
+    external: true

@@ -18,12 +18,14 @@ import UCFKIcon from './assets/projects/UCFK.png';
 import TakeAHikeIcon from './assets/projects/TakeAHike.png';
 import ChessEloHiderIcon from './assets/projects/ChessEloHider.png';
 import ChessBot from './assets/projects/chessWebsite.png';
+import TrustEdIcon from './assets/projects/TrustEd.png';
 
 import ChessBotSC from './assets/projects/chessWebsiteSC.png';
 import CoffeeCatcherIconSC from './assets/projects/CoffeeCatcherSC.png';
 import TakeAHikeSC from './assets/projects/TakeAHikeSC.png';
 import ChessEloHiderSC from './assets/projects/ChessEloHiderSC.png';
 import DarshifySC from './assets/projects/DarshifySC.png'
+import TrustEdSC from './assets/projects/TrustedEdSC.png'
 
 import DarshImage from './assets/aboutme/me.jpg';
 import DarshSnowImage from './assets/aboutme/snowboard.jpg';
@@ -64,6 +66,7 @@ const MyProjects = [
     {name: "TakeAHike", subtitle: "Java with JavaFX and ArcGIS", description: "An application to navigate though all of the trails in New Zealand", thumbnail: TakeAHikeIcon, image: TakeAHikeSC, url:"https://github.com/Darsh-0/TakeAHike"},
     {name: "Chess Elo Hider", subtitle: "JavaScript", description: "An extension made to help you gain elo while playing chess online", thumbnail: ChessEloHiderIcon, image: ChessEloHiderSC, url:"https://github.com/Darsh-0/Chess-elo-hider"},
     {name: "Chess Bot", subtitle: "C#, JavaScript, React", description: "My chess bot programmed from scratch, can you beat it?", thumbnail: ChessBot, image: ChessBotSC, url:"https://chess.darshgandhi.dev"},
+    {name: "TrustEd", subtitle: "Solidity, TypeScript, React", description: "A decentralized, DAO-verified credential registry that proves your degree is real without exposing your data.", thumbnail: TrustEdIcon, image: TrustEdSC, url:"https://web3-hackathon-8kad.vercel.app/"},
 ];
 
 const aboutMeTracks = [
@@ -493,7 +496,7 @@ export default function Home() {
 
     const project1 = MyProjects[6];
     const project2 = MyProjects[4];
-    const project3 = MyProjects[2];
+    const project3 = MyProjects[7];
 
     const onPlay = (index) => {
         setSong(index);

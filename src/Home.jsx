@@ -43,6 +43,7 @@ import reactIcon from './assets/languages/react.png';
 import tailwindIcon from './assets/languages/tailwind.png';
 import gitIcon from './assets/languages/git.png';
 import csIcon from './assets/languages/cs.png';
+import cppIcon from './assets/languages/cpp.png';
 
 import Banner from './Banner';
 import BannerRow from './BannerRow';
@@ -55,7 +56,7 @@ const logos = [
       {image: csIcon, url:"https://dotnet.microsoft.com/en-us/languages/csharp", name:"C#"},
       {image: dockerIcon, url:"https://www.docker.com/", name:"Docker"},
       {image: typescriptIcon, url:"https://www.typescriptlang.org/", name:"TypeScript"},
-      {image: cssIcon, url:"https://www.w3.org/Style/CSS/Overview.en.html", name:"CSS"}
+      {image: cppIcon, url:"https://isocpp.org/", name:"C++"}
 ];
 
 const MyProjects = [
